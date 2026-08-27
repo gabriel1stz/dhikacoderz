@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Dhika Satria Khrisna — Full-Stack Developer, Bot Automation Specialist & Systems Architect. Creator of RiellyBooth, Rinci.in, dan WarkopPOS.">
+    <meta name="keywords"
+        content="Dhika Satria Khrisna, Spider-Verse Portfolio, RiellyBooth, Rinci.in, WarkopPOS, Bot Developer, Reverse Engineering">
+    <meta name="author" content="Dhika Satria Khrisna">
+    <meta name="theme-color" content="#ef4444">
+
+    <title>Dhika Satria Khrisna | Full-Stack & Bot Automation Portfolio</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bangers&family=Dancing+Script:wght@600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="spiderverse-theme">
+    <!-- Interactive Spider Web Physics Canvas -->
+    <canvas id="spider-canvas"></canvas>
+
+    <!-- Web Audio FX Toggle Floating Widget -->
+    <div class="audio-widget" id="audio-widget">
+        <button id="sound-toggle-btn" class="sound-toggle-btn" title="Toggle SFX Audio"
+            aria-label="Toggle Audio Effects">
+            <i class="fa-solid fa-spider" id="sound-icon"></i>
+            <span class="audio-label">SFX: <span id="sound-status-text">ON</span></span>
+        </button>
+    </div>
+
+    <!-- ================= 1. HERO SECTION ================= -->
+    <section class="hero-section" id="home">
+        <!-- Floating Clean Badges in 3D Space (Wave Pattern, No Raw Emojis) -->
+        <div class="orbit-badges-container" id="orbit-badges">
+            <div class="spider-badge-pill sb-1" style="--d: 0s;"><i class="fa-brands fa-python"></i> <span>Python
+                    Automation</span></div>
+            <div class="spider-badge-pill sb-2" style="--d: 0.6s;"><i class="fa-solid fa-code"></i>
+                <span>TypeScript</span>
+            </div>
+            <div class="spider-badge-pill sb-3" style="--d: 1.2s;"><i class="fa-solid fa-camera"></i>
+                <span>RiellyBooth</span>
+            </div>
+            <div class="spider-badge-pill sb-4" style="--d: 1.8s;"><i class="fa-solid fa-cash-register"></i>
+                <span>WarkopPOS</span>
+            </div>
+            <div class="spider-badge-pill sb-5" style="--d: 2.4s;"><i class="fa-solid fa-network-wired"></i> <span>API
+                    Reverse Eng</span></div>
+            <div class="spider-badge-pill sb-6" style="--d: 0.3s;"><i class="fa-solid fa-database"></i> <span>MySQL &
+                    Redis</span></div>
+            <div class="spider-badge-pill sb-7" style="--d: 0.9s;"><i class="fa-brands fa-react"></i> <span>React &
+                    Next.js</span></div>
+            <div class="spider-badge-pill sb-8" style="--d: 1.5s;"><i class="fa-solid fa-wallet"></i> <span>Rinci.in
+                    Cashflow</span></div>
+            <div class="spider-badge-pill sb-9" style="--d: 2.1s;"><i class="fa-solid fa-robot"></i> <span>APK Bot &
+                    Proxy</span></div>
+            <div class="spider-badge-pill sb-10" style="--d: 2.7s;"><i class="fa-solid fa-layer-group"></i>
+                <span>Full-Stack Dev</span>
+            </div>
+        </div>
+
+        <div class="hero-center-content">
+            <div class="spider-alert-badge">
+                <span class="spider-sense-dot"></span>
+                <span class="comic-font">SPIDER-SENSE ACTIVE:</span>
+                <span>FRIENDLY NEIGHBORHOOD DEVELOPER</span>
+            </div>
+
+            <!-- 3D Island Suspended with Web Cords -->
+            <div class="hero-island-3d" id="hero-island">
+                <div class="web-corner-cord cord-top-left"></div>
+                <div class="web-corner-cord cord-top-right"></div>
+                <div class="web-corner-cord cord-bottom-left"></div>
+                <div class="web-corner-cord cord-bottom-right"></div>
+
+                <div class="island-surface spider-plate">
+                    <div class="spider-logo-watermark"><i class="fa-solid fa-spider"></i></div>
+                    <h1 class="island-title comic-title">DHIKA SATRIA</h1>
+                    <div class="island-subtitle">Full-Stack Developer & Bot Specialist</div>
+                    <div class="island-glow-edge"></div>
+                </div>
+                <div class="island-depth"></div>
+            </div>
+
+            <p class="hero-motto">
+                "With great power comes great software." — Membangun web app interaktif, software photobooth, POS ritel,
+                dan bot automation berkecepatan tinggi.
+            </p>
+
+            <div class="hero-action-buttons">
+                <a href="#projects" class="btn-spider-red">
+                    <i class="fa-solid fa-cubes"></i>
+                    <span>Explore Flagship Projects</span>
+                </a>
+                <a href="Dhika_Satria_Khrisna_CV_ATS.pdf" download="Dhika_Satria_Khrisna_CV_ATS.pdf"
+                    class="btn-download-cv">
+                    <i class="fa-solid fa-file-arrow-down"></i>
+                    <span>Download CV (ATS)</span>
+                </a>
+                <a href="#wall" class="btn-spider-cyan">
+                    <i class="fa-solid fa-pen-nib"></i>
+                    <span>Leave a Note</span>
+                </a>
+            </div>
+
+            <div class="hero-scroll-hint">
+                <span>SWING DOWN</span>
+                <i class="fa-solid fa-angles-down scroll-arrow-bounce"></i>
+            </div>
+        </div>
+
+        <div class="spider-web-divider"></div>
+    </section>
+
+    <!-- ================= 2. ABOUT ME SECTION ================= -->
+    <section class="about-section" id="about">
+        <div class="section-container">
+            <div class="comic-card-frame">
+                <div class="comic-action-sticker sticker-thwip">THWIP!</div>
+                <div class="comic-action-sticker sticker-pow">100% LIVE</div>
+
+                <div class="about-grid">
+                    <div class="about-text-col">
+                        <div class="about-greeting-row">
+                            <span class="status-pill-spider"><span class="pulse-dot-red"></span> ACTIVE & AVAILABLE FOR
+                                CONTRACTS / ROLES</span>
+                        </div>
+
+                        <h2 class="about-heading">
+                            Meet <span class="comic-highlight-red">Dhika Satria Khrisna</span>
+                        </h2>
+
+                        <div class="about-badge-tags">
+                            <span class="role-badge badge-red"><i class="fa-solid fa-code"></i> Full-Stack
+                                Architect</span>
+                            <span class="role-badge badge-cyan"><i class="fa-solid fa-robot"></i> APK Bot & Reverse
+                                Eng</span>
+                            <span class="role-badge badge-purple"><i class="fa-solid fa-camera"></i> Creator of
+                                RiellyBooth</span>
+                            <span class="role-badge badge-green"><i class="fa-solid fa-wallet"></i> Creator of
+                                Rinci.in</span>
+                        </div>
+
+                        <p class="about-bio">
+                            Developer serba bisa yang membangun sistem nyata di dunia nyata. Saya menciptakan
+                            <strong>RiellyBooth</strong> (web photobooth photo strip instan tanpa antri studio),
+                            <strong>Rinci.in</strong> (pencatatan keuangan otomatis via WhatsApp bot),
+                            <strong>WarkopPOS</strong> (sistem kasir ritel Warkop 3 Hermanos), serta <strong>Bot
+                                Auto-Create & APK Automation</strong> skala masif dengan reverse-engineered API dan
+                            proxy rotasi.
+                        </p>
+
+                        <div class="about-cta-row">
+                            <a href="#projects" class="btn-spider-red">
+                                <span>Lihat Projek Flagship</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                            <a href="Dhika_Satria_Khrisna_CV_ATS.pdf" download="Dhika_Satria_Khrisna_CV_ATS.pdf"
+                                class="btn-download-cv">
+                                <i class="fa-solid fa-file-arrow-down"></i>
+                                <span>Download CV (ATS)</span>
+                            </a>
+                            <a href="#contact" class="btn-spider-dark">
+                                <i class="fa-solid fa-paper-plane"></i>
+                                <span>Kirim Sinyal / Kontak</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="about-photo-col">
+                        <div class="profile-comic-card">
+                            <div class="spider-mask-badge"><i class="fa-solid fa-spider"></i></div>
+                            <div class="comic-inner-frame">
+                                <img src="images/dhika_profile.png" alt="Dhika Satria Khrisna"
+                                    class="profile-real-photo">
+                                <div class="photo-overlay-badge">
+                                    <div class="comic-name-tag">DHIKA SATRIA KHRISNA</div>
+                                    <div class="comic-role-tag">LEVEL 99 // BOT & WEB HERO</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Infinite Running Comic Wave Banner (Continuous Ocean Wave Motion + Infinite Loop) -->
+        <div class="marquee-banner-wrap">
+            <div class="marquee-track">
+                <!-- Group 1 -->
+                <span class="marquee-item" style="--w: 0;"><i class="fa-solid fa-camera"></i> RIELLYBOOTH
+                    PHOTOSTRIP</span>
+                <span class="marquee-sep"><i class="fa-solid fa-bolt"></i></span>
+                <span class="marquee-item" style="--w: 1;"><i class="fa-solid fa-wallet"></i> RINCI.IN FINANCIAL
+                    OS</span>
+                <span class="marquee-sep"><i class="fa-solid fa-shield-halved"></i></span>
+                <span class="marquee-item" style="--w: 2;"><i class="fa-solid fa-mug-hot"></i> WARKOP POS V2.0</span>
+                <span class="marquee-sep"><i class="fa-solid fa-spider"></i></span>
+                <span class="marquee-item" style="--w: 3;"><i class="fa-solid fa-robot"></i> VIU & APK AUTOMATION</span>
+                <span class="marquee-sep"><i class="fa-solid fa-fire"></i></span>
+                <span class="marquee-item" style="--w: 4;"><i class="fa-solid fa-network-wired"></i> API REVERSE
+                    ENGINEERING</span>
+                <span class="marquee-sep"><i class="fa-solid fa-code"></i></span>
+                <span class="marquee-item" style="--w: 5;"><i class="fa-solid fa-layer-group"></i> FULL-STACK WEB
+                    APPS</span>
+                <span class="marquee-sep"><i class="fa-solid fa-bolt"></i></span>
+                <span class="marquee-item" style="--w: 6;"><i class="fa-solid fa-satellite-dish"></i> AEGIS TELCO
+                    GATEWAY</span>
+                <span class="marquee-sep"><i class="fa-solid fa-spider"></i></span>
+
+                <!-- Group 2 (Exact Duplicate for 100% Seamless Infinite Loop) -->
+                <span class="marquee-item" style="--w: 0;"><i class="fa-solid fa-camera"></i> RIELLYBOOTH
+                    PHOTOSTRIP</span>
+                <span class="marquee-sep"><i class="fa-solid fa-bolt"></i></span>
+                <span class="marquee-item" style="--w: 1;"><i class="fa-solid fa-wallet"></i> RINCI.IN FINANCIAL
+                    OS</span>
+                <span class="marquee-sep"><i class="fa-solid fa-shield-halved"></i></span>
+                <span class="marquee-item" style="--w: 2;"><i class="fa-solid fa-mug-hot"></i> WARKOP POS V2.0</span>
+                <span class="marquee-sep"><i class="fa-solid fa-spider"></i></span>
+                <span class="marquee-item" style="--w: 3;"><i class="fa-solid fa-robot"></i> VIU & APK AUTOMATION</span>
+                <span class="marquee-sep"><i class="fa-solid fa-fire"></i></span>
+                <span class="marquee-item" style="--w: 4;"><i class="fa-solid fa-network-wired"></i> API REVERSE
+                    ENGINEERING</span>
+                <span class="marquee-sep"><i class="fa-solid fa-code"></i></span>
+                <span class="marquee-item" style="--w: 5;"><i class="fa-solid fa-layer-group"></i> FULL-STACK WEB
+                    APPS</span>
+                <span class="marquee-sep"><i class="fa-solid fa-bolt"></i></span>
+                <span class="marquee-item" style="--w: 6;"><i class="fa-solid fa-satellite-dish"></i> AEGIS TELCO
+                    GATEWAY</span>
+                <span class="marquee-sep"><i class="fa-solid fa-spider"></i></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= 3. MY TECH STACK SECTION (ORBITAL TECH CLOUD ANIMATION) ================= -->
+    <section class="skills-section" id="skills">
+        <div class="section-container text-center">
+
+            <!-- Elliptical 3D Orbital Tech Cloud (Replicating exact reference animation) -->
+            <div class="tech-stack-orbit-wrapper" id="tech-orbit-wrapper">
+
+                <div class="tech-stack-center-content">
+                    <span class="sub-label">ARSENAL & POWERS</span>
+                    <h2 class="script-title comic-glow-red">My Tech Stack</h2>
+                </div>
+
+                <!-- Floating Orbiting Tech Badges at Elliptical Angles -->
+                <div class="tech-orbit-cloud" id="tech-orbit-cloud">
+                    <div class="tech-orbit-pill pill-1" style="--rot: -22deg; --delay: 0s;"><i
+                            class="fa-brands fa-python"></i> <span>Python</span></div>
+                    <div class="tech-orbit-pill pill-2" style="--rot: -45deg; --delay: 0.7s;"><i
+                            class="fa-solid fa-database"></i> <span>MySQL</span></div>
+                    <div class="tech-orbit-pill pill-3" style="--rot: 0deg; --delay: 1.4s;"><i
+                            class="fa-solid fa-cloud"></i> <span>Supabase</span></div>
+                    <div class="tech-orbit-pill pill-4" style="--rot: 25deg; --delay: 0.3s;"><i
+                            class="fa-brands fa-react"></i> <span>Next.js</span></div>
+                    <div class="tech-orbit-pill pill-5" style="--rot: 45deg; --delay: 1.9s;"><i
+                            class="fa-solid fa-wind"></i> <span>Tailwind</span></div>
+                    <div class="tech-orbit-pill pill-6" style="--rot: -15deg; --delay: 1.1s;"><i
+                            class="fa-brands fa-js"></i> <span>Javascript</span></div>
+                    <div class="tech-orbit-pill pill-7" style="--rot: 35deg; --delay: 0.5s;"><i
+                            class="fa-solid fa-bolt"></i> <span>NodeJS</span></div>
+                    <div class="tech-orbit-pill pill-8" style="--rot: -35deg; --delay: 1.6s;"><i
+                            class="fa-brands fa-ts"></i> <span>TypeScript</span></div>
+                    <div class="tech-orbit-pill pill-9" style="--rot: 15deg; --delay: 0.2s;"><i
+                            class="fa-solid fa-hard-drive"></i> <span>PostgreSQL</span></div>
+                    <div class="tech-orbit-pill pill-10" style="--rot: -30deg; --delay: 0.9s;"><i
+                            class="fa-solid fa-network-wired"></i> <span>MongoDB</span></div>
+                    <div class="tech-orbit-pill pill-11" style="--rot: 28deg; --delay: 1.8s;"><i
+                            class="fa-solid fa-robot"></i> <span>Rest API</span></div>
+                </div>
+            </div>
+
+            <!-- Domain Skill Cards (2x2 Grid) -->
+            <div class="domain-cards-grid">
+
+                <div class="domain-card card-spider-red">
+                    <div class="domain-icon-wrapper red-bg">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <div class="domain-info">
+                        <h3 class="domain-name">Frontend & Web Apps</h3>
+                        <p class="domain-tools">React, Next.js, TypeScript, HTML5 Canvas, Tailwind CSS, Responsive &
+                            Micro-animations</p>
+                    </div>
+                </div>
+
+                <div class="domain-card card-spider-cyan">
+                    <div class="domain-icon-wrapper cyan-bg">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <div class="domain-info">
+                        <h3 class="domain-name">Bot & APK Automation (Core Job)</h3>
+                        <p class="domain-tools">API Reverse Engineering, Viu / APK Auto-Create, mitmproxy, curl_cffi,
+                            Rotating Proxies, Frida</p>
+                    </div>
+                </div>
+
+                <div class="domain-card card-spider-purple">
+                    <div class="domain-icon-wrapper purple-bg">
+                        <i class="fa-solid fa-cash-register"></i>
+                    </div>
+                    <div class="domain-info">
+                        <h3 class="domain-name">POS & Hardware I/O</h3>
+                        <p class="domain-tools">ESC-POS Thermal Printing, Web Camera Capture API, Offline-First
+                            IndexedDB</p>
+                    </div>
+                </div>
+
+                <div class="domain-card card-spider-green">
+                    <div class="domain-icon-wrapper green-bg">
+                        <i class="fa-solid fa-chart-pie"></i>
+                    </div>
+                    <div class="domain-info">
+                        <h3 class="domain-name">Backend & FinTech Logic</h3>
+                        <p class="domain-tools">Node.js, Express, Python (FastAPI / Requests), PostgreSQL, SQLite,
+                            Dynamic QRIS</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= 4. JOURNEY & EXPERIENCE TIMELINE (SCROLLING SPIDER CRAWLER & LASER BEAM) ================= -->
+    <section class="journey-section" id="journey">
+        <div class="section-container">
+            <div class="text-center section-header-centered">
+                <span class="sub-label">HERO CHRONICLES</span>
+                <h2 class="script-title comic-glow-purple">Journey & Experience</h2>
+            </div>
+
+            <!-- 4 Stat Counters Row -->
+            <div class="journey-stats-grid">
+                <div class="j-stat-card border-red">
+                    <div class="stat-icon-top"><i class="fa-solid fa-globe"></i></div>
+                    <span class="j-stat-number" data-target="3" data-decimals="0">0</span><span
+                        class="j-stat-plus">+</span>
+                    <span class="j-stat-label">Live Web Products</span>
+                </div>
+                <div class="j-stat-card border-cyan">
+                    <div class="stat-icon-top"><i class="fa-solid fa-bolt"></i></div>
+                    <span class="j-stat-number" data-target="50000" data-format="comma">0</span><span
+                        class="j-stat-plus">+</span>
+                    <span class="j-stat-label">Accounts Auto-Created</span>
+                </div>
+                <div class="j-stat-card border-purple">
+                    <div class="stat-icon-top"><i class="fa-solid fa-camera"></i></div>
+                    <span class="j-stat-number" data-target="15000" data-format="comma">0</span><span
+                        class="j-stat-plus">+</span>
+                    <span class="j-stat-label">Photo Strips Rendered</span>
+                </div>
+                <div class="j-stat-card border-green">
+                    <div class="stat-icon-top"><i class="fa-solid fa-shield-halved"></i></div>
+                    <span class="j-stat-number" data-target="99.98" data-decimals="2">0</span><span
+                        class="j-stat-plus">%</span>
+                    <span class="j-stat-label">Automation Success Rate</span>
+                </div>
+            </div>
+
+            <!-- Vertical Timeline with Spider Crawler Following Scroll -->
+            <div class="timeline-container" id="timeline-container">
+                <!-- Vertical Line Track -->
+                <div class="timeline-line-track" id="timeline-line-track">
+                    <!-- Dynamic Silk Thread Line drawn by spider -->
+                    <div class="timeline-silk-line" id="timeline-silk-line"></div>
+                    <!-- Flowing Continuous Laser Beam from Top to Bottom -->
+                    <div class="timeline-laser-beam" id="timeline-laser"></div>
+                    <!-- Animated Spider Crawler Hanging on Thread Following Scroll -->
+                    <div class="timeline-spider-crawler" id="timeline-spider-crawler"
+                        title="Spider-Sense Scroll Tracker">
+                        <div class="spider-glow-ripple"></div>
+                        <div class="spider-crawler-body">
+                            <i class="fa-solid fa-spider"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 1 -->
+                <div class="timeline-item left-item" data-timeline-index="1">
+                    <div class="timeline-dot dot-red">
+                        <div class="dot-pulse-ring"></div>
+                    </div>
+                    <div class="timeline-card comic-card-red">
+                        <div class="timeline-date-badge">2024 - Present <span class="job-tag tag-red">Active
+                                Product</span></div>
+                        <h3 class="timeline-role">Creator & Full-Stack Developer</h3>
+                        <div class="timeline-company">RiellyBooth & Rinci.in</div>
+                        <p class="timeline-desc">
+                            Membangun web photobooth <strong>RiellyBooth</strong> dengan live frame coquette dan render
+                            instan, serta platform <strong>Rinci.in</strong> untuk pencatatan keuangan otomatis via bot
+                            WhatsApp.
+                        </p>
+                        <div class="timeline-tech-pills">
+                            <span>React</span>
+                            <span>Next.js</span>
+                            <span>Canvas API</span>
+                            <span>WhatsApp Bot</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2 -->
+                <div class="timeline-item right-item" data-timeline-index="2">
+                    <div class="timeline-dot dot-cyan">
+                        <div class="dot-pulse-ring"></div>
+                    </div>
+                    <div class="timeline-card comic-card-cyan">
+                        <div class="timeline-date-badge">2024 - Present <span class="job-tag tag-cyan">Automation
+                                Ops</span></div>
+                        <h3 class="timeline-role">Bot Developer & API Reverse Engineer</h3>
+                        <div class="timeline-company">APK Automation & Account Engine</div>
+                        <p class="timeline-desc">
+                            Membuat bot auto-create & auto-premium massal (Viu, streaming apps, carrier gateway) dengan
+                            reverse-engineering endpoint internal, bypass token, dan rotasi proxy multi-threading.
+                        </p>
+                        <div class="timeline-tech-pills">
+                            <span>Python</span>
+                            <span>httpx</span>
+                            <span>curl_cffi</span>
+                            <span>mitmproxy</span>
+                            <span>Proxy Mesh</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 3 -->
+                <div class="timeline-item left-item" data-timeline-index="3">
+                    <div class="timeline-dot dot-purple">
+                        <div class="dot-pulse-ring"></div>
+                    </div>
+                    <div class="timeline-card comic-card-purple">
+                        <div class="timeline-date-badge">2024 - Present <span class="job-tag tag-purple">Owner &
+                                Dev</span></div>
+                        <h3 class="timeline-role">Creator of WarkopPOS (V2.0)</h3>
+                        <div class="timeline-company">Warkop 3 Hermanos</div>
+                        <p class="timeline-desc">
+                            Merancang software kasir dan operasional meja warkop: Quick Order, cetak struk kasir & tiket
+                            dapur thermal, sinkronisasi stok bahan menipis, dan tracking omzet harian.
+                        </p>
+                        <div class="timeline-tech-pills">
+                            <span>React</span>
+                            <span>TypeScript</span>
+                            <span>Tailwind</span>
+                            <span>IndexedDB</span>
+                            <span>QRIS</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= 5. SHOWCASE: MULTIVERSE STACKING DECK & DYNAMIC SUNSET TRANSITION ================= -->
+    <section class="showcase-section" id="projects">
+
+        <!-- Dynamic Sun & Sunset Sky Layer (Sun Sets As You Scroll Down) -->
+        <div class="sunset-sky-container" id="sunset-sky">
+            <div class="dynamic-sun" id="dynamic-sun">
+                <div class="sun-glow"></div>
+                <div class="sun-body"></div>
+            </div>
+        </div>
+
+        <div class="showcase-header text-center">
+            <div class="spider-multiverse-badge">MULTIVERSE PORTFOLIO</div>
+            <span class="sub-label">FLAGSHIP DELIVERIES</span>
+            <h2 class="script-title-large comic-glow-red">My Portfolio</h2>
+            <p class="showcase-instruction">
+                Scroll down to explore my featured projects. Cards will stack and overlay one another from the bottom,
+                just like a deck of comic cards.
+            </p>
+            <div class="scroll-down-text">SCROLL DOWN ↓</div>
+        </div>
+
+        <!-- Stacking Cards Deck Container -->
+        <div class="card-deck-stack" id="card-deck-stack">
+
+            <!-- Stack Card 1: RiellyBooth (Real Screenshot Embedded) -->
+            <div class="stack-card card-riellybooth" style="--stack-index: 1;">
+                <div class="stack-card-inner">
+                    <div class="card-preview-col">
+                        <div class="mock-device-screen browser-window-frame">
+                            <div class="mock-top-bar">
+                                <div class="browser-dots">
+                                    <span class="b-dot b-red"></span>
+                                    <span class="b-dot b-yellow"></span>
+                                    <span class="b-dot b-green"></span>
+                                </div>
+                                <span class="mock-url-pill"><i class="fa-solid fa-lock"></i>
+                                    https://riellybooth.my.id</span>
+                            </div>
+                            <div class="mock-screenshot-wrapper">
+                                <img src="images/preview_riellybooth.png" alt="RiellyBooth Web Photobooth Preview"
+                                    class="mock-screenshot-img">
+                                <div class="screenshot-hover-badge"><i class="fa-solid fa-camera"></i> Live Web
+                                    Photobooth</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-details-col">
+                        <span class="project-category-tag tag-pink-badge">LIVE WEB PHOTOBOOTH</span>
+                        <h3 class="project-name">RiellyBooth — Bikin Photo Strip? Tinggal Pose Aja 🖤</h3>
+                        <p class="project-summary">
+                            Web photobooth interaktif tanpa perlu install atau daftar. Dilengkapi live frame Coquette
+                            Ribbon, auto-jepret timer otomatis, HD image render, dan hasil live photo yang langsung siap
+                            masuk Instagram Story & TikTok.
+                        </p>
+                        <div class="project-tags-row">
+                            <span class="p-tag">React</span>
+                            <span class="p-tag">Canvas API</span>
+                            <span class="p-tag">Web Camera</span>
+                            <span class="p-tag">Tailwind CSS</span>
+                            <span class="p-tag">riellybooth.my.id</span>
+                        </div>
+                        <div class="card-btn-group">
+                            <button class="btn-spider-red-sm" data-project="riellybooth">
+                                <span>View Details</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </button>
+                            <a href="https://riellybooth.my.id" target="_blank" rel="noopener noreferrer"
+                                class="btn-live-link">
+                                <i class="fa-solid fa-globe"></i> Visit Site
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stack Card 2: Rinci.in Cashflow (Real Screenshot Embedded) -->
+            <div class="stack-card card-rinciin" style="--stack-index: 2;">
+                <div class="stack-card-inner">
+                    <div class="card-preview-col">
+                        <div class="mock-device-screen browser-window-frame">
+                            <div class="mock-top-bar">
+                                <div class="browser-dots">
+                                    <span class="b-dot b-red"></span>
+                                    <span class="b-dot b-yellow"></span>
+                                    <span class="b-dot b-green"></span>
+                                </div>
+                                <span class="mock-url-pill"><i class="fa-solid fa-lock"></i>
+                                    https://rinciin.my.id</span>
+                            </div>
+                            <div class="mock-screenshot-wrapper">
+                                <img src="images/preview_rinciin.png" alt="Rinci.in Cashflow Financial OS Preview"
+                                    class="mock-screenshot-img">
+                                <div class="screenshot-hover-badge"><i class="fa-solid fa-wallet"></i> WhatsApp
+                                    Financial OS</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-details-col">
+                        <span class="project-category-tag tag-green-badge">FINTECH & ACCOUNTING OS</span>
+                        <h3 class="project-name">Rinci.in — Catat Keuanganmu Semudah Kirim Pesan & Transaksi</h3>
+                        <p class="project-summary">
+                            Platform pencatatan keuangan harian otomatis via WhatsApp bot (voice note, chat teks, dan
+                            scan foto struk belanja). Terintegrasi multi-dompet (BCA, GoPay, Cash), grafik arus kas 7
+                            hari, dan rekap P&L tanpa spreadsheet ribet.
+                        </p>
+                        <div class="project-tags-row">
+                            <span class="p-tag">Next.js</span>
+                            <span class="p-tag">WhatsApp Cloud API</span>
+                            <span class="p-tag">OCR Scanner</span>
+                            <span class="p-tag">TypeScript</span>
+                            <span class="p-tag">rinciin.my.id</span>
+                        </div>
+                        <div class="card-btn-group">
+                            <button class="btn-spider-red-sm" data-project="rinciin">
+                                <span>View Details</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </button>
+                            <a href="https://rinciin.my.id" target="_blank" rel="noopener noreferrer"
+                                class="btn-live-link">
+                                <i class="fa-solid fa-globe"></i> Visit Site
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stack Card 3: WarkopPOS (Real Screenshot Embedded) -->
+            <div class="stack-card card-warkop" style="--stack-index: 3;">
+                <div class="stack-card-inner">
+                    <div class="card-preview-col">
+                        <div class="mock-device-screen browser-window-frame">
+                            <div class="mock-top-bar">
+                                <div class="browser-dots">
+                                    <span class="b-dot b-red"></span>
+                                    <span class="b-dot b-yellow"></span>
+                                    <span class="b-dot b-green"></span>
+                                </div>
+                                <span class="mock-url-pill"><i class="fa-solid fa-mug-hot"></i> Warkop 3 Hermanos POS
+                                    V2.0</span>
+                            </div>
+                            <div class="mock-screenshot-wrapper">
+                                <img src="images/preview_warkop.png" alt="WarkopPOS Online V2.0 Dashboard"
+                                    class="mock-screenshot-img">
+                                <div class="screenshot-hover-badge"><i class="fa-solid fa-cash-register"></i> Warkop POS
+                                    V2.0</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-details-col">
+                        <span class="project-category-tag tag-amber-badge">F&B POS ECOSYSTEM</span>
+                        <h3 class="project-name">WarkopPOS — Cashier & Table Management System</h3>
+                        <p class="project-summary">
+                            Dashboard kasir modern untuk Warkop 3 Hermanos. Dilengkapi Quick Order tap kilat, Buat Order
+                            meja (0/9 meja), Kasir / Bayar QRIS dinamis & tunai, pemantauan stok menu menipis, dan
+                            pelacakan antrean order real-time.
+                        </p>
+                        <div class="project-tags-row">
+                            <span class="p-tag">React</span>
+                            <span class="p-tag">TypeScript</span>
+                            <span class="p-tag">Tailwind</span>
+                            <span class="p-tag">IndexedDB</span>
+                            <span class="p-tag">QRIS Engine</span>
+                        </div>
+                        <div class="card-btn-group">
+                            <button class="btn-spider-red-sm" data-project="warkop-pos">
+                                <span>View Details</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stack Card 4: Viu & APK Premium Automation Suite -->
+            <div class="stack-card card-bot" style="--stack-index: 4;">
+                <div class="stack-card-inner">
+                    <div class="card-preview-col">
+                        <div class="mock-device-screen terminal-window-frame">
+                            <div class="mock-top-bar terminal-top-bar">
+                                <div class="browser-dots">
+                                    <span class="b-dot b-red"></span>
+                                    <span class="b-dot b-yellow"></span>
+                                    <span class="b-dot b-green"></span>
+                                </div>
+                                <span class="mock-url-pill terminal-title">python bot_engine.py --scale=100</span>
+                            </div>
+                            <div class="mock-terminal-body">
+                                <div class="term-line term-green">[+] INTERCEPT: Mobile Auth Token Captured</div>
+                                <div class="term-line term-cyan">[*] PROXY: 1,420 Residential Proxies Active</div>
+                                <div class="term-line term-white">[✓] VIU_PREMIUM: Auto-Provision Success (200 OK)</div>
+                                <div class="term-line term-yellow">[⚡] JA3_TLS: Chrome120 Spoofing Clean</div>
+                                <div class="term-line term-purple">[>] THREADS: 50 Workers Concurrent Running...</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-details-col">
+                        <span class="project-category-tag tag-cyan-badge">API REVERSE ENGINEERING & BOT</span>
+                        <h3 class="project-name">Viu & APK Premium Account Automation Engine</h3>
+                        <p class="project-summary">
+                            Sistem automasi pembuatan akun massal dan auto-upgrade subscription untuk aplikasi mobile
+                            streaming (seperti Viu dan APK premium lainnya). Bekerja dengan cara reverse-engineer
+                            internal REST API, rotasi proxy SOCKS5, spoofing TLS fingerprint (`curl_cffi`), dan
+                            auto-solve verification.
+                        </p>
+                        <div class="project-tags-row">
+                            <span class="p-tag">Python</span>
+                            <span class="p-tag">curl_cffi</span>
+                            <span class="p-tag">mitmproxy</span>
+                            <span class="p-tag">Frida</span>
+                            <span class="p-tag">Proxy Mesh</span>
+                        </div>
+                        <div class="card-btn-group">
+                            <button class="btn-spider-red-sm" data-project="apk-bot">
+                                <span>View Details</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stack Card 5: AegisTelco Gateway -->
+            <div class="stack-card card-aegis" style="--stack-index: 5;">
+                <div class="stack-card-inner">
+                    <div class="card-preview-col">
+                        <div class="mock-device-screen terminal-window-frame aegis-frame">
+                            <div class="mock-top-bar terminal-top-bar">
+                                <div class="browser-dots">
+                                    <span class="b-dot b-red"></span>
+                                    <span class="b-dot b-yellow"></span>
+                                    <span class="b-dot b-green"></span>
+                                </div>
+                                <span class="mock-url-pill terminal-title">aegis_telco_gateway --stream</span>
+                            </div>
+                            <div class="mock-terminal-body">
+                                <div class="term-line term-cyan">[+] SIM_ORDER: Acquired Number +919876543210</div>
+                                <div class="term-line term-green">[✓] PREFIX_CHECK: 987 (600-939 Valid)</div>
+                                <div class="term-line term-yellow">[*] POLLING: Carrier OTP Arrived in 0.8s: [ 849201 ]
+                                </div>
+                                <div class="term-line term-white">[✓] STATUS: Authenticated & Session Sealed</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-details-col">
+                        <span class="project-category-tag tag-purple-badge">TELECOM API INTEGRATION</span>
+                        <h3 class="project-name">AegisTelco — Multi-Provider Virtual Number & Verification Gateway</h3>
+                        <p class="project-summary">
+                            Microservice adapter multi-provider SMS (SMS-Activate, 5SIM, Grizzly) dengan filter prefix
+                            (600–939), mekanisme auto-refund saldo instan jika prefix tidak cocok, dan polling OTP
+                            otomatis tanpa input manual.
+                        </p>
+                        <div class="project-tags-row">
+                            <span class="p-tag">Python 3.11</span>
+                            <span class="p-tag">REST APIs</span>
+                            <span class="p-tag">Proxy Parser</span>
+                            <span class="p-tag">State Machine</span>
+                        </div>
+                        <div class="card-btn-group">
+                            <button class="btn-spider-red-sm" data-project="aegis">
+                                <span>View Details</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= 6. INTERACTIVE GRAFFITI / STICKY WEB WALL ================= -->
+    <section class="wall-section" id="wall">
+        <div class="section-container">
+            <div class="wall-interactive-layout">
+
+                <!-- Left Floating Sticky Web Notes -->
+                <div class="wall-feed left-feed" id="sticky-feed-left">
+                    <div class="sticky-note note-pink">
+                        <div class="note-time">just now <i class="fa-solid fa-spider"></i></div>
+                        <div class="note-author">@anonim_user</div>
+                        <div class="note-content">"Riellybooth lucu bgt framenya! Simpel bgt tinggal pose lgsg jadi 💕"
+                        </div>
+                    </div>
+                    <div class="sticky-note note-yellow">
+                        <div class="note-time">15m ago <i class="fa-solid fa-bolt"></i></div>
+                        <div class="note-author">@hermanos_crew</div>
+                        <div class="note-content">"WarkopPOS ngebantu banget pas shift malem rame antrean meja lancar!"
+                        </div>
+                    </div>
+                    <div class="sticky-note note-green">
+                        <div class="note-time">today <i class="fa-solid fa-shield-halved"></i></div>
+                        <div class="note-author">@rinciin_fan</div>
+                        <div class="note-content">"Rinciin via WhatsApp beneran praktis buat catat pengeluaran harian."
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Center "Leave a Web Note" Card -->
+                <div class="wall-form-card">
+                    <div class="spider-tag-small">BROOKLYN GRAFFITI WALL</div>
+                    <h2 class="script-title text-center comic-glow-red">Leave a Web Note</h2>
+                    <p class="wall-form-sub text-center">
+                        Tinggalkan pesan, feedback, atau sinyal kolaborasi di dinding Spider-Verse ini!
+                    </p>
+
+                    <form id="sticky-note-form" onsubmit="return false;">
+                        <div class="form-group">
+                            <label for="wall-name">YOUR HERO NAME / HANDLE</label>
+                            <input type="text" id="wall-name" class="wall-input"
+                                placeholder="e.g. @miles_morales / Recruiter" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="wall-comment">YOUR MESSAGE ON THE WEB</label>
+                            <textarea id="wall-comment" class="wall-textarea" rows="3"
+                                placeholder="Tulis pesan atau feedback kamu di sini..." required></textarea>
+                        </div>
+
+                        <button class="btn-spider-red btn-block" id="btn-post-sticky">
+                            <i class="fa-solid fa-spider"></i>
+                            <span>SHOOT WEB NOTE! (THWIP)</span>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Right Floating Sticky Web Notes -->
+                <div class="wall-feed right-feed" id="sticky-feed-right">
+                    <div class="sticky-note note-blue">
+                        <div class="note-time">just now <i class="fa-solid fa-spider"></i></div>
+                        <div class="note-author">@bot_community</div>
+                        <div class="note-content">"Bot Viu & APK automation-nya jalan kenceng bgt tanpa kena ban 👍"
+                        </div>
+                    </div>
+                    <div class="sticky-note note-lavender">
+                        <div class="note-time">1h ago <i class="fa-solid fa-bolt"></i></div>
+                        <div class="note-author">@recruiter_tech</div>
+                        <div class="note-content">"Portofolio konsep Spider-Verse nya gokil parah, interaktif &
+                            berbobot!"</div>
+                    </div>
+                    <div class="sticky-note note-yellow">
+                        <div class="note-time">today <i class="fa-solid fa-shield-halved"></i></div>
+                        <div class="note-author">@visitor_friend</div>
+                        <div class="note-content">"Animasi web fisika pas digeser mouse seru banget dimainin 🔥"</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= 7. FOOTER / CONTACT CTA (SPIDER-VERSE THEMED) ================= -->
+    <section class="contact-section" id="contact">
+        <div class="section-container text-center">
+
+            <!-- Glowing Spider-Signal Hologram with Web Rings -->
+            <div class="spider-signal-glyph-wrapper">
+                <div class="spider-signal-glyph">
+                    <i class="fa-solid fa-spider"></i>
+                    <div class="spider-web-ring ring-1"></div>
+                    <div class="spider-web-ring ring-2"></div>
+                    <div class="portal-orbit-dot"></div>
+                </div>
+            </div>
+
+            <span class="sub-label comic-font">SPIDER-SENSE READY // NEXT CHAPTER</span>
+            <h2 class="script-title-huge comic-glow-red">Let's Create Something Great</h2>
+
+            <p class="contact-subtext">
+                "With great power comes great software." — Terbuka untuk kolaborasi pembuatan web app interaktif, bot
+                otomatisasi skala masif, POS ritel, maupun peluang kerja full-time / freelance. Kirim sinyal langsung
+                via email di bawah.
+            </p>
+
+            <div class="hire-cta-wrap">
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=dhikasatria40@gmail.com&su=Spider-Signal%20//%20Let%27s%20Unlock%20Your%20Potential%20-%20Dhika%20Satria&body=Hi%20Dhika,%0A%0AI%20saw%20your%20Spider-Verse%20portfolio%20and%20would%20love%20to%20connect%20with%20you%20regarding%20a%20project%20/%20opportunity...%0A%0A"
+                    target="_blank" rel="noopener noreferrer" class="btn-spider-hire">
+                    <i class="fa-solid fa-spider"></i>
+                    <span>HIRE ME TO UNLOCK MY POTENTIAL</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+            </div>
+
+            <!-- 3-Column Spider-Verse Minimalist Bottom Footer Bar -->
+            <div class="footer-bottom-bar">
+                <div class="footer-left">
+                    <i class="fa-solid fa-mask"></i> <span>Dhika Satria Khrisna — Spider-Verse Dev</span>
+                </div>
+                <div class="footer-center">
+                    <a href="https://riellybooth.my.id" target="_blank" rel="noopener noreferrer"><i
+                            class="fa-solid fa-camera"></i> RiellyBooth</a>
+                    <span class="dot-sep">•</span>
+                    <a href="https://rinciin.my.id" target="_blank" rel="noopener noreferrer"><i
+                            class="fa-solid fa-wallet"></i> Rinci.in</a>
+                    <span class="dot-sep">•</span>
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=dhikasatria40@gmail.com&su=Spider-Signal%20//%20Project%20Inquiry%20-%20Dhika%20Satria"
+                        target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-envelope"></i> Email</a>
+                </div>
+                <div class="footer-right">&copy; 2026 — Engineered with Spider-Power</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= 8. FLOATING SPIDER-HUD DOCK ================= -->
+    <div class="floating-dock-wrapper" id="floating-dock">
+        <nav class="floating-dock-pill">
+            <a href="#home" class="dock-item active" data-section="home">
+                <i class="fa-solid fa-house"></i>
+                <span>HOME</span>
+            </a>
+            <a href="#about" class="dock-item" data-section="about">
+                <i class="fa-solid fa-user-ninja"></i>
+                <span>ABOUT</span>
+            </a>
+            <a href="#skills" class="dock-item" data-section="skills">
+                <i class="fa-solid fa-bolt"></i>
+                <span>SKILLS</span>
+            </a>
+            <a href="#journey" class="dock-item" data-section="journey">
+                <i class="fa-solid fa-briefcase"></i>
+                <span>JOURNEY</span>
+            </a>
+            <a href="#projects" class="dock-item" data-section="projects">
+                <i class="fa-solid fa-cubes"></i>
+                <span>PROJECTS</span>
+            </a>
+            <a href="#wall" class="dock-item" data-section="wall">
+                <i class="fa-solid fa-note-sticky"></i>
+                <span>WALL</span>
+            </a>
+            <a href="#contact" class="dock-item" data-section="contact">
+                <i class="fa-solid fa-paper-plane"></i>
+                <span>CONTACT</span>
+            </a>
+        </nav>
+    </div>
+
+    <!-- ================= PROJECT DEEP-DIVE MODAL ================= -->
+    <div class="modal-backdrop" id="project-modal" aria-hidden="true">
+        <div class="modal-container">
+            <button class="modal-close-btn" id="modal-close-btn" aria-label="Close modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="modal-content" id="modal-content-body">
+                <!-- Content dynamically populated by app.js -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+</body>
+
+</html>

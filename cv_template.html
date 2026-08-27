@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dhika Satria Khrisna - CV ATS Times New Roman</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Times New Roman', Times, 'Nimbus Roman No9 L', serif;
+            color: #1a1a1a;
+            background-color: #ffffff;
+            line-height: 1.34;
+            font-size: 8.7pt;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        /* Top Pastel Blue Accent Stripe */
+        .top-accent-bar {
+            height: 18px;
+            background: linear-gradient(90deg, #9ec5db 0%, #b8d9ec 50%, #9ec5db 100%);
+            width: 100%;
+        }
+
+        .cv-wrapper {
+            padding: 10px 32px 12px 32px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 6px;
+        }
+
+        .header h1 {
+            font-size: 19pt;
+            font-weight: bold;
+            letter-spacing: 2.5px;
+            color: #111827;
+            text-transform: uppercase;
+            margin-bottom: 2px;
+        }
+
+        .header .job-title {
+            font-size: 9.5pt;
+            font-weight: normal;
+            font-style: italic;
+            letter-spacing: 2px;
+            color: #374151;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .header .header-divider {
+            height: 0.8px;
+            background-color: #9ca3af;
+            width: 88%;
+            margin: 0 auto 5px auto;
+        }
+
+        .header .contact-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            font-size: 8.4pt;
+            color: #4b5563;
+        }
+
+        .header .contact-row a {
+            color: #1d4ed8;
+            text-decoration: none;
+        }
+
+        /* Summary Paragraph */
+        .summary-box {
+            margin-bottom: 7px;
+        }
+
+        .summary-text {
+            color: #1f2937;
+            font-size: 8.5pt;
+            text-align: justify;
+            line-height: 1.33;
+            text-justify: inter-word;
+        }
+
+        /* Section Styling */
+        .section {
+            margin-bottom: 6px;
+        }
+
+        .section-title {
+            font-size: 9.3pt;
+            font-weight: bold;
+            color: #111827;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 2px;
+        }
+
+        .section-divider {
+            height: 0.8px;
+            background-color: #9ca3af;
+            width: 100%;
+            margin-bottom: 4px;
+        }
+
+        /* Entries */
+        .entry {
+            margin-bottom: 4.5px;
+        }
+
+        .entry:last-child {
+            margin-bottom: 0;
+        }
+
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 1.5px;
+        }
+
+        .entry-title {
+            font-size: 8.8pt;
+            font-weight: bold;
+            color: #111827;
+        }
+
+        .entry-company {
+            font-weight: normal;
+            color: #374151;
+            font-style: italic;
+        }
+
+        .entry-date {
+            font-size: 8.3pt;
+            font-weight: normal;
+            color: #4b5563;
+            white-space: nowrap;
+        }
+
+        .entry-tech {
+            font-size: 8pt;
+            color: #1e40af;
+            font-style: italic;
+            margin-bottom: 1.5px;
+        }
+
+        ul.bullet-list {
+            list-style-type: disc;
+            padding-left: 16px;
+            margin-top: 1px;
+        }
+
+        ul.bullet-list li {
+            font-size: 8.3pt;
+            color: #1f2937;
+            margin-bottom: 1.2px;
+            line-height: 1.29;
+            text-align: justify;
+            text-justify: inter-word;
+        }
+
+        ul.bullet-list li strong {
+            color: #111827;
+        }
+
+        /* Education */
+        .edu-entry {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .edu-title {
+            font-size: 8.8pt;
+            font-weight: bold;
+            color: #111827;
+        }
+
+        .edu-major {
+            font-size: 8.3pt;
+            color: #4b5563;
+            font-style: italic;
+            margin-top: 1px;
+        }
+
+        /* Skills Table */
+        .skills-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2px;
+        }
+
+        .skills-table td {
+            font-size: 8.2pt;
+            line-height: 1.3;
+            padding: 1.2px 4px 1.2px 0;
+            vertical-align: top;
+            color: #1f2937;
+        }
+
+        .skills-table td.skill-label {
+            font-weight: bold;
+            color: #111827;
+            width: 20%;
+            white-space: nowrap;
+        }
+
+        .skills-table td.skill-value {
+            color: #374151;
+            width: 80%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP PASTEL ACCENT STRIPE -->
+    <div class="top-accent-bar"></div>
+
+    <div class="cv-wrapper">
+        
+        <!-- HEADER -->
+        <div class="header">
+            <h1>DHIKA SATRIA KHRISNA</h1>
+            <div class="job-title">FULL-STACK DEVELOPER &bull; BOT AUTOMATION SPECIALIST</div>
+            <div class="header-divider"></div>
+            <div class="contact-row">
+                <span>(+62) 896-5449-9818</span>
+                <span>|</span>
+                <span>dhikasatria40@gmail.com</span>
+                <span>|</span>
+                <span>Kab. Tangerang, Banten</span>
+                <span>|</span>
+                <span>Portfolio: <a href="https://riellybooth.my.id">riellybooth.my.id</a></span>
+                <span>|</span>
+                <span>GitHub: <a href="https://github.com/dhikasatria">github.com/dhikasatria</a></span>
+            </div>
+        </div>
+
+        <!-- PROFESSIONAL SUMMARY -->
+        <div class="summary-box">
+            <p class="summary-text">
+                Saya adalah Software Engineer & Automation Specialist yang berpengalaman dalam merancang dan mengembangkan aplikasi web full-stack, sistem point-of-sale (POS) offline-first, bot otomatisasi berkecepatan tinggi, dan reverse engineering mobile API. Sukses meluncurkan 3+ produk digital live ke publik, memproses 15,000+ photo strip via client-side Canvas rendering, serta mengotomatisasi 50,000+ akun & transaksi dengan tingkat keberhasilan 99.98%. Memiliki kemampuan pemecahan masalah yang kuat, adaptasi cepat pada arsitektur sistem baru, serta terbiasa mengintegrasikan hardware (printer thermal/kamera) dan mitigasi anti-bot bypass.
+            </p>
+        </div>
+
+        <!-- PENDIDIKAN -->
+        <div class="section">
+            <div class="section-title">P E N D I D I K A N</div>
+            <div class="section-divider"></div>
+            <div class="edu-entry">
+                <div>
+                    <div class="edu-title">SMA Negeri 31 Kabupaten Tangerang</div>
+                    <div class="edu-major">Jurusan Ilmu Pengetahuan Sosial (IPS) — Fokus Minat: Rekayasa Perangkat Lunak & Sistem Otomasi</div>
+                </div>
+                <div class="entry-date">2022 – 2025</div>
+            </div>
+        </div>
+
+        <!-- PENGALAMAN KERJA -->
+        <div class="section">
+            <div class="section-title">P E N G A L A M A N &nbsp; K E R J A</div>
+            <div class="section-divider"></div>
+
+            <!-- Job 1 -->
+            <div class="entry">
+                <div class="entry-header">
+                    <div class="entry-title">Lead Developer & Operations Automator <span class="entry-company">| Riell Pedia</span></div>
+                    <div class="entry-date">2024 – Sekarang</div>
+                </div>
+                <ul class="bullet-list">
+                    <li>Mengembangkan skrip otomatisasi Python untuk pemantauan inventaris real-time, sinkronisasi stok lintas marketplace, dan scraping harga supplier.</li>
+                    <li>Membangun integrasi bot notifikasi dan pencatatan transaksi otomatis, memangkas waktu kerja manual operasional hingga 60%.</li>
+                    <li>Menganalisis performa penjualan bulanan dan mengoptimalkan margin laba inventaris secara sistematis.</li>
+                </ul>
+            </div>
+
+            <!-- Job 2 -->
+            <div class="entry">
+                <div class="entry-header">
+                    <div class="entry-title">Operations & Digital Systems Specialist <span class="entry-company">| Satria Music Studio</span></div>
+                    <div class="entry-date">2019 – 2024</div>
+                </div>
+                <ul class="bullet-list">
+                    <li>Merancang alur reservasi studio dan sistem pencatatan keuangan digital untuk mengotomatisasi pelacakan transaksi harian.</li>
+                    <li>Bertanggung jawab atas manajemen operasional, ketersediaan instrumen, dan koordinasi pelanggan, meningkatkan retensi hingga 30%.</li>
+                    <li>Menyusun laporan arus kas berkala serta mengelola komunikasi internal dan operasional harian studio.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- PROYEK TEKNOLOGI & PORTFOLIO -->
+        <div class="section">
+            <div class="section-title">P R O Y E K &nbsp; T E K N O L O G I &nbsp; & &nbsp; P O R T O F O L I O</div>
+            <div class="section-divider"></div>
+
+            <!-- Project 1: RiellyBooth -->
+            <div class="entry">
+                <div class="entry-header">
+                    <div class="entry-title">RiellyBooth — Live Instant Web Photobooth Platform <span class="entry-company">(riellybooth.my.id)</span></div>
+                    <div class="entry-date">2024 – Sekarang</div>
+                </div>
+                <div class="entry-tech">Teknologi: React, TypeScript, HTML5 Canvas API, Web Camera API, Tailwind CSS</div>
+                <ul class="bullet-list">
+                    <li>Merancang web photobooth interaktif tanpa instalasi dengan dukungan live camera feed dan template frame kustom.</li>
+                    <li>Mengoptimalkan engine rendering Canvas di sisi klien (client-side processing), memproses 15,000+ photo strip dengan zero latency.</li>
+                </ul>
+            </div>
+
+            <!-- Project 2: Rinci.in -->
+            <div class="entry">
+                <div class="entry-header">
+                    <div class="entry-title">Rinci.in — WhatsApp Bot Financial OS & Cashflow Management <span class="entry-company">(rinciin.my.id)</span></div>
+                    <div class="entry-date">2024 – Sekarang</div>
+                </div>
+                <div class="entry-tech">Teknologi: Next.js, TypeScript, Python, WhatsApp Cloud API, OCR Scanner, PostgreSQL</div>
+                <ul class="bullet-list">
+                    <li>Membangun platform pencatatan keuangan otomatis via WhatsApp bot dengan fitur parsing voice note, chat teks, dan scan struk via OCR.</li>
+                    <li>Menyediakan dashboard analitik multi-dompet (BCA, GoPay, Tunai) dengan grafik arus kas mingguan dan rekap P&L instan.</li>
+                </ul>
+            </div>
+
+            <!-- Project 3: WarkopPOS -->
+            <div class="entry">
+                <div class="entry-header">
+                    <div class="entry-title">WarkopPOS V2.0 — Modern F&B Cashier & Table Management System</div>
+                    <div class="entry-date">2024 – Sekarang</div>
+                </div>
+                <div class="entry-tech">Teknologi: React, TypeScript, Tailwind CSS, IndexedDB (Offline-First), ESC-POS Thermal Printing, QRIS Engine</div>
+                <ul class="bullet-list">
+                    <li>Merancang sistem kasir retail offline-first menggunakan IndexedDB serta integrasi cetak struk thermal kasir & tiket dapur via ESC-POS.</li>
+                    <li>Mengimplementasikan manajemen meja (0/9 table layout) dan dynamic QRIS, mempercepat alur checkout pesanan hingga 40%.</li>
+                </ul>
+            </div>
+
+            <!-- Project 4: Bot Automation -->
+            <div class="entry">
+                <div class="entry-header">
+                    <div class="entry-title">High-Concurrency Mobile APK & API Automation Engine</div>
+                    <div class="entry-date">2024 – Sekarang</div>
+                </div>
+                <div class="entry-tech">Teknologi: Python, curl_cffi (TLS/JA3 Spoofing), mitmproxy, Frida (SSL Pinning Bypass), SOCKS5 Proxy Mesh</div>
+                <ul class="bullet-list">
+                    <li>Melakukan reverse engineering API internal aplikasi mobile Android dengan mem-bypass SSL Pinning dan menganalisis payload request.</li>
+                    <li>Membangun bot multi-threading dengan rotasi IP residensial, mengotomatisasi 50,000+ akun dengan success rate 99.98%.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- KEAHLIAN -->
+        <div class="section">
+            <div class="section-title">K E A H L I A N</div>
+            <div class="section-divider"></div>
+            <table class="skills-table">
+                <tr>
+                    <td class="skill-label">Bahasa Pemrograman:</td>
+                    <td class="skill-value">TypeScript, JavaScript (ES6+), Python, SQL, HTML5, CSS3</td>
+                </tr>
+                <tr>
+                    <td class="skill-label">Frontend & Web Apps:</td>
+                    <td class="skill-value">React.js, Next.js, Tailwind CSS, HTML5 Canvas API, Web Camera API, Responsive UI/UX</td>
+                </tr>
+                <tr>
+                    <td class="skill-label">Backend & Otomasi:</td>
+                    <td class="skill-value">Node.js (Express), Python (FastAPI, httpx, curl_cffi), RESTful API, WhatsApp Cloud API, WebSockets</td>
+                </tr>
+                <tr>
+                    <td class="skill-label">Database & Storage:</td>
+                    <td class="skill-value">PostgreSQL, MySQL, Redis, SQLite, IndexedDB (Offline-First Storage)</td>
+                </tr>
+                <tr>
+                    <td class="skill-label">Reverse Eng & Tools:</td>
+                    <td class="skill-value">mitmproxy, Burp Suite, Frida, TLS/JA3 Spoofing, SOCKS5 Proxy Rotation, ESC-POS Thermal Printing, Git/Linux</td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+</body>
+</html>
