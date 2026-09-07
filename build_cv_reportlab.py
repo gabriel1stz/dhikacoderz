@@ -125,14 +125,14 @@ def build_pdf(filename="Dhika_Satria_Khrisna_CV_Tech_ATS.pdf"):
 
     # 1. HEADER
     story.append(Paragraph("DHIKA SATRIA KHRISNA", name_style))
-    story.append(Paragraph("FULL-STACK DEVELOPER & AUTOMATION ENGINEER", title_style))
+    story.append(Paragraph("FULL-STACK DEVELOPER & WORDPRESS SPECIALIST", title_style))
     
     contact_text = (
         "📍 Tangerang, Banten &nbsp;|&nbsp; "
         "📞 (+62) 896-5449-9818 &nbsp;|&nbsp; "
         "✉️ <a href='mailto:dhikasatria40@gmail.com' color='#0284c7'>dhikasatria40@gmail.com</a> &nbsp;|&nbsp; "
-        "🌐 <a href='https://riellybooth.my.id' color='#0284c7'>Portfolio (riellybooth.my.id)</a> &nbsp;|&nbsp; "
-        "🐙 <a href='https://github.com/dhikasatria' color='#0284c7'>GitHub</a>"
+        "🌐 <a href='https://sorot24.online' color='#0284c7'>sorot24.online</a> &nbsp;|&nbsp; "
+        "🐙 <a href='https://github.com/gabriel1stz' color='#0284c7'>GitHub</a>"
     )
     story.append(Paragraph(contact_text, contact_style))
     story.append(HRFlowable(width="100%", thickness=1.5, color=primary_color, spaceBefore=1, spaceAfter=5))
@@ -141,10 +141,9 @@ def build_pdf(filename="Dhika_Satria_Khrisna_CV_Tech_ATS.pdf"):
     story.append(Paragraph("PROFESSIONAL SUMMARY", section_header_style))
     story.append(HRFlowable(width="100%", thickness=0.6, color=border_color, spaceBefore=1, spaceAfter=4))
     summary_text = (
-        "<b>Software Engineer & Automation Specialist</b> dengan rekam jejak membangun web app interaktif, arsitektur offline-first, "
-        "bot otomatisasi berkecepatan tinggi, dan reverse engineering mobile API. Sukses merilis 3+ produk web live ke publik, "
-        "memproses <b>15,000+ photo strip</b> via client-side Canvas rendering, serta mengotomatisasi <b>50,000+ akun & transaksi</b> "
-        "dengan success rate 99.98%. Berpengalaman dalam integrasi hardware (printer thermal/kamera) dan mitigasi anti-bot bypass."
+        "<b>Software Engineer & Full-Stack Web Developer</b> berpengalaman dalam membangun aplikasi web interaktif, portal berita WordPress "
+        "berkinerja tinggi, sistem kasir retail (POS) offline-first, dan otomasi platform bisnis. Sukses merilis 4+ produk digital live ke publik, "
+        "melayani puluhan ribu pembaca dan pengguna aktif, serta mengoptimalkan arsitektur tema, SEO Google News, dan integrasi hardware printer thermal."
     )
     story.append(Paragraph(summary_text, body_style))
     story.append(Spacer(1, 3))
@@ -154,12 +153,12 @@ def build_pdf(filename="Dhika_Satria_Khrisna_CV_Tech_ATS.pdf"):
     story.append(HRFlowable(width="100%", thickness=0.6, color=border_color, spaceBefore=1, spaceAfter=4))
     
     skills = [
-        ("Languages", "TypeScript, JavaScript (ES6+), Python, SQL, HTML5, CSS3"),
-        ("Frontend & UI", "React.js, Next.js, Tailwind CSS, HTML5 Canvas API, Web Camera API, Responsive UI"),
-        ("Backend & APIs", "Node.js (Express), Python (FastAPI, httpx, curl_cffi), RESTful API, WhatsApp Cloud API, WebSockets"),
-        ("Databases", "PostgreSQL, MySQL, Redis, SQLite, IndexedDB (Offline-First Storage)"),
-        ("Automation & RE", "mitmproxy, Burp Suite, Frida, TLS/JA3 Fingerprinting, SOCKS5 Proxy Mesh, CAPTCHA Solver"),
-        ("Hardware & DevOps", "ESC-POS Thermal Printer Integration, Dynamic QRIS Engine, Git/GitHub, Linux/Bash")
+        ("Languages", "TypeScript, JavaScript (ES6+), PHP, Python, SQL, HTML5, CSS3"),
+        ("Frontend & UI", "React.js, Next.js, Tailwind CSS, HTML5 Canvas API, Web Camera API, Responsive UI/UX"),
+        ("CMS & Web Portals", "WordPress Custom Theme Development (sorot24-theme), Yoast SEO Schema, RSS Aggregator, Caching"),
+        ("Backend & APIs", "Node.js (Express), Python (FastAPI, Requests), RESTful API, WhatsApp Cloud API, WebSockets"),
+        ("Databases & Storage", "PostgreSQL, MySQL, Redis, SQLite, IndexedDB (Offline-First Storage)"),
+        ("Hardware & DevOps", "ESC-POS Thermal Printer Integration, Dynamic QRIS, Git/GitHub, Linux/Bash, Vercel, Cloudflare")
     ]
     for cat, items in skills:
         p = Paragraph(f"<b>• {cat}:</b> {items}", bullet_style)
@@ -178,9 +177,8 @@ def build_pdf(filename="Dhika_Satria_Khrisna_CV_Tech_ATS.pdf"):
     t1.setStyle(TableStyle([('VALIGN', (0,0), (-1,-1), 'TOP'), ('LEFTPADDING', (0,0), (-1,-1), 0), ('RIGHTPADDING', (0,0), (-1,-1), 0), ('BOTTOMPADDING', (0,0), (-1,-1), 1), ('TOPPADDING', (0,0), (-1,-1), 0)]))
     story.append(t1)
     story.append(Paragraph("<i>Tech: React, TypeScript, HTML5 Canvas API, Web Camera API, Tailwind CSS</i>", tech_style))
-    story.append(Paragraph("• Merancang dan meluncurkan aplikasi web photobooth instan tanpa instalasi dengan dukungan kamera real-time dan live frame overlay kustom.", bullet_style))
-    story.append(Paragraph("• Mengoptimalkan engine rendering Canvas untuk menghasilkan output photo strip beresolusi tinggi (HD) secara instan di sisi klien (client-side) tanpa beban latency server.", bullet_style))
-    story.append(Paragraph("• Memproses lebih dari <b>15,000+ photo strip</b> siap unduh dengan user engagement dan retensi tinggi.", bullet_style))
+    story.append(Paragraph("• Merancang aplikasi web photobooth instan tanpa instalasi dengan streaming kamera real-time dan live frame overlay kustom.", bullet_style))
+    story.append(Paragraph("• Mengoptimalkan engine rendering Canvas client-side untuk memproses <b>15,000+ photo strip</b> berkualitas HD dengan zero server latency.", bullet_style))
     story.append(Spacer(1, 2))
 
     # Project 2: Rinci.in
@@ -208,17 +206,17 @@ def build_pdf(filename="Dhika_Satria_Khrisna_CV_Tech_ATS.pdf"):
     story.append(Paragraph("• Mengimplementasikan manajemen meja (0/9 table layout) dan QRIS dinamis, memangkas durasi antrean kasir hingga 40%.", bullet_style))
     story.append(Spacer(1, 2))
 
-    # Project 4: High-Concurrency Bot
+    # Project 4: Sorot24.online
     t4 = Table([
-        [Paragraph("<b>High-Concurrency Mobile APK & API Automation Engine</b>", item_title_style), 
+        [Paragraph("<b>Sorot24.online — Real-Time News Portal & Custom WordPress Theme</b> (<a href='https://sorot24.online' color='#0284c7'>sorot24.online</a>)", item_title_style), 
          Paragraph("2024 – Sekarang", item_right_style)]
     ], colWidths=[420, 110])
     t4.setStyle(TableStyle([('VALIGN', (0,0), (-1,-1), 'TOP'), ('LEFTPADDING', (0,0), (-1,-1), 0), ('RIGHTPADDING', (0,0), (-1,-1), 0), ('BOTTOMPADDING', (0,0), (-1,-1), 1), ('TOPPADDING', (0,0), (-1,-1), 0)]))
     story.append(t4)
-    story.append(Paragraph("<i>Tech: Python, curl_cffi, mitmproxy, Frida, AsyncIO, SOCKS5 Proxy Mesh, TLS Spoofing</i>", tech_style))
-    story.append(Paragraph("• Melakukan reverse engineering REST API internal aplikasi mobile Android dengan mem-bypass SSL Pinning (Frida) dan menganalisis payload traffic (mitmproxy).", bullet_style))
-    story.append(Paragraph("• Membangun bot multi-threading berkecepatan tinggi dengan spoofing TLS/JA3 fingerprint (curl_cffi) dan rotasi IP residensial.", bullet_style))
-    story.append(Paragraph("• Memproses <b>50,000+ akun terotomatisasi</b> dengan tingkat keberhasilan (success rate) <b>99.98%</b>.", bullet_style))
+    story.append(Paragraph("<i>Tech: WordPress, PHP, Custom Theme (sorot24-theme), Yoast SEO Schema, MySQL, RSS Aggregator</i>", tech_style))
+    story.append(Paragraph("• Mengembangkan portal media berita nasional dengan custom WordPress theme (sorot24-theme), tipografi modern Inter, dan layout responsif.", bullet_style))
+    story.append(Paragraph("• Mengimplementasikan skema Yoast SEO Graph terstruktur untuk pengindeksan artikel di Google News dan breaking news live stream.", bullet_style))
+    story.append(Paragraph("• Mengoptimalkan asset caching dan agregasi RSS feed otomatis untuk menyajikan berita terkini ke puluhan ribu pembaca harian.", bullet_style))
     story.append(Spacer(1, 3))
 
     # 5. PROFESSIONAL EXPERIENCE

@@ -705,66 +705,38 @@ export function handleQuickOrderCheckout(cartItems, tableNum, paymentMethod) {
                 '<strong>Stok & Omzet Real-Time:</strong> Monitoring bahan menipis dan grafik omzet harian.'
             ]
         },
-        'apk-bot': {
-            tag: 'API REVERSE ENGINEERING & BOT',
-            title: 'Viu & APK Premium Account Automation Engine',
-            subtitle: 'Bulk Auto-Registration, Internal Mobile API Reversing, TLS Spoofing & Proxy Rotation',
-            architecture: 'Sistem automasi pembuatan akun massal dan auto-upgrade subscription untuk aplikasi mobile streaming (seperti Viu dan APK premium lainnya). Menggunakan teknik intercept network traffic dengan mitmproxy/Burp Suite untuk memetakan internal REST API, mereplikasi payload signature token, memutar ribuan proxy residential/datacenter, dan menggunakan curl_cffi untuk TLS JA3 browser/mobile spoofing.',
-            code: `# Viu & APK Bulk Auto-Registration Automation Core
-import asyncio
-from curl_cffi import requests
+        'sorot24': {
+            tag: 'PORTAL MEDIA & WORDPRESS CMS',
+            title: 'Sorot24.online — Portal Berita Nasional, Daerah & Realtime Terkini',
+            subtitle: 'Custom WordPress Theme Engineering, Yoast SEO Optimization, RSS Feed Aggregator & Speed Caching',
+            architecture: 'Portal media berita nasional berkecepatan tinggi yang dikembangkan menggunakan arsitektur custom WordPress theme (sorot24-theme). Terintegrasi dengan Yoast SEO Schema Graph untuk optimasi Google News, WP RSS Aggregator untuk sindikasi feed berita otomatis, asset minification, image containment & lazy loading, serta desain editorial yang 100% responsif di layar ponsel maupun desktop.',
+            code: `// Sorot24 Custom WordPress Theme Query & Breaking News Stream
+function render_sorot24_breaking_news_ticker() {
+    $breaking_query = new WP_Query([
+        'category_name'  => 'terkini,nasional',
+        'posts_per_page' => 5,
+        'post_status'    => 'publish',
+        'no_found_rows'  => true, // Speed optimization
+    ]);
 
-async def register_premium_account(email, password, proxy_str):
-    session = requests.AsyncSession(
-        impersonate="chrome120", # TLS Fingerprint Spoofing
-        proxies={"http": proxy_str, "https": proxy_str}
-    )
-    
-    # Reverse-Engineered Internal Auth Endpoint
-    signup_url = "https://api.target-app.com/v2/auth/register"
-    payload = {
-        "email": email,
-        "password": password,
-        "client_signature": generate_auth_sig(email),
-        "device_id": generate_random_uuid()
-    }
-    
-    res = await session.post(signup_url, json=payload, timeout=10)
-    if res.status_code == 200:
-        token = res.json().get("access_token")
-        # Trigger subscription upgrade flow
-        return await activate_premium_plan(session, token)
-    return None`,
+    if ($breaking_query->have_posts()) :
+        echo '<div class="sorot24-ticker-wrapper"><span class="ticker-badge">TERKINI:</span><div class="ticker-scroll">';
+        while ($breaking_query->have_posts()) : $breaking_query->the_post();
+            printf(
+                '<a href="%s" class="ticker-item"><span class="time">[%s]</span> %s</a>',
+                esc_url(get_permalink()),
+                esc_html(get_the_time('H:i')),
+                esc_html(wp_trim_words(get_the_title(), 12, '...'))
+            );
+        endwhile;
+        echo '</div></div>';
+        wp_reset_postdata();
+    endif;
+}`,
             metrics: [
-                '<strong>50,000+ Akun Berhasil Dibuat:</strong> Kecepatan tinggi dengan multi-threaded async workers.',
-                '<strong>Bypass WAF & Rate Limiting:</strong> Rotasi proxy dan spoofing TLS JA3 tanpa deteksi ban.',
-                '<strong>Pekerjaan Utama di Bidang Automasi:</strong> Teruji menangani berbagai platform streaming dan aplikasi mobile.'
-            ]
-        },
-        'aegis': {
-            tag: 'TELECOM API INTEGRATION',
-            title: 'AegisTelco — Multi-Provider Virtual Number & Verification Gateway',
-            subtitle: 'Automated Telco Carrier API, Prefix 600-939 Sanitization & Sub-Second OTP Polling',
-            architecture: 'Microservice adapter universal yang mengagregasikan API provider nomor virtual global (SMS-Activate, 5SIM, Grizzly SMS) dengan validasi prefix 600–939, auto-refund instan jika nomor bukan subscriber aktif, dan polling OTP otomatis sub-detik.',
-            code: `# AegisTelco Automated Number Acquisition & OTP Polling Loop
-def purchase_and_poll_otp(provider_client, service_code="jio"):
-    order = provider_client.buy_number(country="india", service=service_code)
-    clean_num = clean_phone_number(order.number)
-    
-    # 600 - 939 Prefix Filter Strategy
-    prefix = int(clean_num[:3])
-    if not (600 <= prefix <= 939):
-        provider_client.cancel_and_refund(order.id)
-        return None # Balance 100% saved
-        
-    # Trigger carrier OTP and poll automatically
-    trigger_carrier_sms(clean_num)
-    otp_code = provider_client.poll_otp_until_received(order.id, timeout=120)
-    return validate_carrier_session(clean_num, otp_code)`,
-            metrics: [
-                '<strong>Zero Balance Loss:</strong> 100% dana saldo di-refund otomatis jika prefix tidak sesuai.',
-                '<strong>Sub-Second Polling:</strong> Tidak perlu input OTP manual di terminal.',
-                '<strong>Multi-Provider Failover:</strong> Mendukung 5SIM, SMS-Activate, dan Grizzly SMS.'
+                '<strong>Live di <a href="https://sorot24.online" target="_blank" style="color: #ef4444;">sorot24.online</a>:</strong> Portal media berita yang menyajikan berita nasional, daerah, politik, ekonomi, dan teknologi.',
+                '<strong>High-Performance Theme:</strong> Kustomisasi tema independen (sorot24-theme) dengan font Inter & FontAwesome 6.',
+                '<strong>SEO & Social Sharing Ready:</strong> Terintegrasi Yoast SEO v28+ schema graph dan widget sharing AddToAny instan.'
             ]
         }
     };

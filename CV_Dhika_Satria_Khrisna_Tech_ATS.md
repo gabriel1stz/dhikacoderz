@@ -1,22 +1,22 @@
 # DHIKA SATRIA KHRISNA
-**Full-Stack Developer & Automation Engineer**  
+**Full-Stack Developer & WordPress Specialist**  
 📍 Tangerang, Banten, Indonesia | 📞 (+62) 896-5449-9818 | ✉️ dhikasatria40@gmail.com  
-🌐 Portfolio: [dhikasatria.dev](https://riellybooth.my.id) | 💼 LinkedIn: linkedin.com/in/dhikasatria | 🐙 GitHub: github.com/dhikasatria
+🌐 Portfolio: [dhikasatria.my.id](https://sorot24.online) | 💼 LinkedIn: linkedin.com/in/dhika-satria-khrisna-22534a363 | 🐙 GitHub: github.com/gabriel1stz
 
 ---
 
 ## PROFESSIONAL SUMMARY
-Software Engineer & Automation Specialist berpengalaman dalam merancang dan mengembangkan aplikasi web full-stack, sistem point-of-sale (POS) offline-first, bot otomatisasi berkecepatan tinggi, dan reverse engineering API mobile. Berhasil meluncurkan 3+ produk digital live ke publik dengan total 50,000+ akun terotomatisasi dan 15,000+ aset grafis terproses. Terbiasa memecahkan masalah kompleks dari arsitektur backend, integrasi hardware (printer thermal/kamera), hingga optimasi performa dan anti-bot bypass.
+Software Engineer & Full-Stack Web Developer berpengalaman dalam merancang dan mengembangkan aplikasi web interaktif, portal berita WordPress berkinerja tinggi, sistem point-of-sale (POS) offline-first, dan otomasi platform bisnis. Berhasil meluncurkan 4+ produk digital live ke publik yang melayani puluhan ribu pembaca dan pengguna aktif harian. Terbiasa memecahkan masalah kompleks dari arsitektur backend, integrasi hardware (printer thermal/kamera), optimasi SEO Google News, hingga peningkatan performa web responsif.
 
 ---
 
 ## TECHNICAL SKILLS
-* **Programming Languages:** TypeScript, JavaScript (ES6+), Python, SQL, HTML5, CSS3
+* **Programming Languages:** TypeScript, JavaScript (ES6+), PHP, Python, SQL, HTML5, CSS3
 * **Frontend Development:** React.js, Next.js, Tailwind CSS, Canvas API, Web Camera API, Responsive UI/UX
-* **Backend & APIs:** Node.js (Express), Python (FastAPI, httpx, Requests, curl_cffi), RESTful API, WebSocket, WhatsApp Cloud API
+* **CMS & Web Portals:** WordPress Custom Theme Development, Yoast SEO Schema, RSS Feed Aggregator, Asset Caching & Speed Optimization
+* **Backend & APIs:** Node.js (Express), Python (FastAPI, Requests), RESTful API, WebSocket, WhatsApp Cloud API
 * **Database & Storage:** PostgreSQL, MySQL, Redis, SQLite, IndexedDB (Offline-First)
-* **Automation & Reverse Engineering:** mitmproxy, Burp Suite, Frida, APK Decompilation, TLS/JA3 Fingerprinting, Proxy Rotation, CAPTCHA Bypass
-* **Hardware & Integration:** ESC-POS Thermal Printer Integration, QRIS Dynamic Engine, Webhook Pipelines, Git, Linux/Bash
+* **Tools & Integration:** ESC-POS Thermal Printing, QRIS Dynamic Engine, Git, Linux/Bash, Cloudflare, Vercel
 
 ---
 
@@ -37,13 +37,13 @@ Software Engineer & Automation Specialist berpengalaman dalam merancang dan meng
 *Tech: React, TypeScript, Tailwind CSS, IndexedDB, ESC-POS Thermal Printing, QRIS Dynamic API*
 * Mengembangkan sistem kasir retail F&B dengan kapabilitas *offline-first* menggunakan IndexedDB, memastikan transaksi tetap berjalan tanpa koneksi internet.
 * Mengintegrasikan protokol printer thermal ESC-POS untuk cetak tiket pesanan dapur dan struk kasir secara simultan.
-* Mengimplementasikan manajemen meja (Table Layout) dan payment gateway QRIS dinamis untuk mempercepat checkout hingga 40%.
+* Mengimplementasikan manajemen meja (Table Layout 9 meja) dan payment gateway QRIS dinamis untuk mempercepat checkout hingga 40%.
 
-### **High-Concurrency APK & API Automation Engine**
-*Tech: Python, curl_cffi, mitmproxy, Frida, AsyncIO, Multi-Threading, SOCKS5 Proxy Mesh*
-* Melakukan reverse engineering REST API internal aplikasi mobile Android dengan mem-bypass SSL Pinning (Frida) dan menganalisis payload request (mitmproxy).
-* Mengembangkan bot otomatisasi multi-threading dengan spoofing TLS/JA3 fingerprint (`curl_cffi`) dan rotasi IP residensial.
-* Berhasil memproses lebih dari 50,000+ automasi pembuatan akun dengan tingkat keberhasilan (*success rate*) mencapai 99.98%.
+### **Sorot24.online — Real-Time News Portal & Custom WordPress Theme**
+*Link: [sorot24.online](https://sorot24.online)* | *Tech: WordPress, PHP, Custom Theme (sorot24-theme), Yoast SEO, MySQL, RSS Aggregator*
+* Mengembangkan dan memelihara portal berita nasional dengan arsitektur tema kustom independen (sorot24-theme), tipografi modern Inter, dan layout editorial kilat.
+* Mengimplementasikan skema Yoast SEO Graph terstruktur untuk memaksimalkan pengindeksan artikel di Google News dan integrasi breaking news live stream.
+* Mengoptimalkan asset loading, gambar responsif (lazy loading), dan RSS feed aggregator untuk menyajikan berita terkini ke ribuan pembaca harian.
 
 ---
 
