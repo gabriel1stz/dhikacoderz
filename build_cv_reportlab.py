@@ -5,7 +5,7 @@ from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, HRFlowable, ListFlowable, ListItem
 from reportlab.lib.enums import TA_CENTER, TA_LEFT, TA_JUSTIFY
 
-def build_pdf(filename="Dhika_Satria_Khrisna_CV_Tech_ATS.pdf"):
+def build_pdf(filename="Dhika_Satria_Khrisna_CV_ATS.pdf"):
     # Page setup
     doc = SimpleDocTemplate(
         filename,
