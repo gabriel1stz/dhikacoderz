@@ -177,7 +177,7 @@
                             <div class="spider-mask-badge"><i class="fa-solid fa-spider"></i></div>
                             <div class="comic-inner-frame">
                                 <img src="images/dhika_profile.png" alt="Dhika Satria Khrisna"
-                                    class="profile-real-photo">
+                                    class="profile-real-photo" loading="lazy" decoding="async">
                                 <div class="photo-overlay-badge">
                                     <div class="comic-name-tag">DHIKA SATRIA KHRISNA</div>
                                     <div class="comic-role-tag">FULL-STACK & WORDPRESS DEV</div>
@@ -362,10 +362,13 @@
             <div class="timeline-container" id="timeline-container">
                 <!-- Vertical Line Track -->
                 <div class="timeline-line-track" id="timeline-line-track">
-                    <!-- Dynamic Silk Thread Line drawn by spider -->
-                    <div class="timeline-silk-line" id="timeline-silk-line"></div>
-                    <!-- Flowing Continuous Laser Beam from Top to Bottom -->
-                    <div class="timeline-laser-beam" id="timeline-laser"></div>
+                    <!-- Masked container so silk & laser never bleed above timeline into heading/stats -->
+                    <div class="timeline-beam-mask">
+                        <!-- Dynamic Silk Thread Line drawn by spider -->
+                        <div class="timeline-silk-line" id="timeline-silk-line"></div>
+                        <!-- Flowing Continuous Laser Beam from Top to Bottom -->
+                        <div class="timeline-laser-beam" id="timeline-laser"></div>
+                    </div>
                     <!-- Animated Spider Crawler Hanging on Thread Following Scroll -->
                     <div class="timeline-spider-crawler" id="timeline-spider-crawler"
                         title="Spider-Sense Scroll Tracker">
@@ -493,7 +496,7 @@
                             </div>
                             <div class="mock-screenshot-wrapper">
                                 <img src="images/preview_riellybooth.png" alt="RiellyBooth Web Photobooth Preview"
-                                    class="mock-screenshot-img">
+                                    class="mock-screenshot-img" loading="lazy" decoding="async">
                                 <div class="screenshot-hover-badge"><i class="fa-solid fa-camera"></i> Live Web
                                     Photobooth</div>
                             </div>
@@ -544,7 +547,7 @@
                             </div>
                             <div class="mock-screenshot-wrapper">
                                 <img src="images/preview_rinciin.png" alt="Rinci.in Cashflow Financial OS Preview"
-                                    class="mock-screenshot-img">
+                                    class="mock-screenshot-img" loading="lazy" decoding="async">
                                 <div class="screenshot-hover-badge"><i class="fa-solid fa-wallet"></i> WhatsApp
                                     Financial OS</div>
                             </div>
@@ -595,7 +598,7 @@
                             </div>
                             <div class="mock-screenshot-wrapper">
                                 <img src="images/preview_warkop.png" alt="WarkopPOS Online V2.0 Dashboard"
-                                    class="mock-screenshot-img">
+                                    class="mock-screenshot-img" loading="lazy" decoding="async">
                                 <div class="screenshot-hover-badge"><i class="fa-solid fa-cash-register"></i> Warkop POS
                                     V2.0</div>
                             </div>
@@ -642,7 +645,7 @@
                             </div>
                             <div class="mock-screenshot-wrapper">
                                 <img src="images/preview_sorot24.png" alt="Sorot24.online Media Portal Preview"
-                                    class="mock-screenshot-img">
+                                    class="mock-screenshot-img" loading="lazy" decoding="async">
                                 <div class="screenshot-hover-badge"><i class="fa-solid fa-newspaper"></i> Real-Time News Portal</div>
                             </div>
                         </div>

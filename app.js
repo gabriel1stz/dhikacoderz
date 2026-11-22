@@ -25,29 +25,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
 let audioCtx = null;
 let isAudioMuted = false;
+let hasUserInteracted = false;
+
+window.addEventListener('pointerdown', () => { hasUserInteracted = true; }, { once: true, passive: true });
+window.addEventListener('keydown', () => { hasUserInteracted = true; }, { once: true, passive: true });
+
+function getSharedAudioContext() {
+    if (!hasUserInteracted) return null;
+    if (!audioCtx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (AudioContextClass) {
+            audioCtx = new AudioContextClass();
+        }
+    }
+    if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume().catch(() => {});
+    }
+    return audioCtx;
+}
 
 function initSpiderAudioSynth() {
     const toggleBtn = document.getElementById('sound-toggle-btn');
     const statusText = document.getElementById('sound-status-text');
     const soundIcon = document.getElementById('sound-icon');
 
-    function getAudioContext() {
-        if (!audioCtx) {
-            const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-            if (AudioContextClass) {
-                audioCtx = new AudioContextClass();
-            }
-        }
-        if (audioCtx && audioCtx.state === 'suspended') {
-            audioCtx.resume();
-        }
-        return audioCtx;
-    }
-
     // Toggle Mute
     if (toggleBtn) {
         toggleBtn.addEventListener('click', (e) => {
             e.stopPropagation();
+            hasUserInteracted = true;
             isAudioMuted = !isAudioMuted;
             if (isAudioMuted) {
                 toggleBtn.classList.add('muted');
@@ -57,7 +63,7 @@ function initSpiderAudioSynth() {
                 toggleBtn.classList.remove('muted');
                 statusText.textContent = 'ON';
                 soundIcon.className = 'fa-solid fa-spider';
-                getAudioContext();
+                getSharedAudioContext();
                 playThwipSound();
             }
         });
@@ -69,6 +75,7 @@ function initSpiderAudioSynth() {
             if (!isAudioMuted) playHoverZapSound();
         });
         el.addEventListener('click', () => {
+            hasUserInteracted = true;
             if (!isAudioMuted && !el.id.includes('sound-toggle')) playThwipSound();
         });
     });
@@ -77,7 +84,8 @@ function initSpiderAudioSynth() {
 function playThwipSound() {
     if (isAudioMuted) return;
     try {
-        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const ctx = getSharedAudioContext();
+        if (!ctx) return;
         const now = ctx.currentTime;
 
         // Pitch drop swoop (THWIP sound)
@@ -102,7 +110,8 @@ function playThwipSound() {
 function playHoverZapSound() {
     if (isAudioMuted) return;
     try {
-        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const ctx = getSharedAudioContext();
+        if (!ctx) return;
         const now = ctx.currentTime;
 
         const osc = ctx.createOscillator();
@@ -126,7 +135,8 @@ function playHoverZapSound() {
 function playChimeSound() {
     if (isAudioMuted) return;
     try {
-        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const ctx = getSharedAudioContext();
+        if (!ctx) return;
         const now = ctx.currentTime;
 
         [523.25, 659.25, 783.99, 1046.50].forEach((freq, i) => {
@@ -157,14 +167,16 @@ function initSpiderWebCanvas() {
     const canvas = document.getElementById('spider-canvas');
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { alpha: true });
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
+    let rafId = null;
+    let isRunning = false;
 
     window.addEventListener('resize', () => {
         width = canvas.width = window.innerWidth;
         height = canvas.height = window.innerHeight;
-    });
+    }, { passive: true });
 
     const mouse = { x: width / 2, y: height / 2, active: false };
 
@@ -172,7 +184,7 @@ function initSpiderWebCanvas() {
         mouse.x = e.clientX;
         mouse.y = e.clientY;
         mouse.active = true;
-    });
+    }, { passive: true });
 
     window.addEventListener('mouseleave', () => {
         mouse.active = false;
@@ -181,32 +193,38 @@ function initSpiderWebCanvas() {
     // On Click: trigger web pulse
     const webPulses = [];
     window.addEventListener('click', (e) => {
+        if (!isRunning) return;
         webPulses.push({
             x: e.clientX,
             y: e.clientY,
             radius: 5,
-            maxRadius: 180,
-            alpha: 0.8,
+            maxRadius: 160,
+            alpha: 0.75,
             color: Math.random() > 0.5 ? '#ef4444' : '#00f0ff'
         });
-    });
+    }, { passive: true });
 
-    // Web nodes (Nodes in the multiverse space)
-    const nodeCount = Math.floor((width * height) / 18000);
+    // Capped node count for smooth 60fps
+    const nodeCount = Math.min(45, Math.max(18, Math.floor((width * height) / 38000)));
     const nodes = [];
+    const maxDist = 110;
+    const maxDistSq = maxDist * maxDist;
+    const mouseDist = 155;
+    const mouseDistSq = mouseDist * mouseDist;
 
     for (let i = 0; i < nodeCount; i++) {
         nodes.push({
             x: Math.random() * width,
             y: Math.random() * height,
-            vx: (Math.random() - 0.5) * 0.7,
-            vy: (Math.random() - 0.5) * 0.7,
-            radius: Math.random() * 2 + 1,
+            vx: (Math.random() - 0.5) * 0.65,
+            vy: (Math.random() - 0.5) * 0.65,
+            radius: Math.random() * 1.8 + 1,
             color: Math.random() > 0.7 ? '#ef4444' : (Math.random() > 0.4 ? '#00f0ff' : '#a855f7')
         });
     }
 
     function animate() {
+        if (!isRunning) return;
         ctx.clearRect(0, 0, width, height);
 
         // Render Web Pulses (from clicks)
@@ -229,7 +247,7 @@ function initSpiderWebCanvas() {
             ctx.globalAlpha = 1;
         }
 
-        // Update & Render Web Nodes & Web Strands
+        // Update & Render Web Nodes & Web Strands (no shadowBlur for GPU perf)
         for (let i = 0; i < nodes.length; i++) {
             const n = nodes[i];
 
@@ -239,24 +257,19 @@ function initSpiderWebCanvas() {
             if (n.x < 0 || n.x > width) n.vx *= -1;
             if (n.y < 0 || n.y > height) n.vy *= -1;
 
-            // Render node point
             ctx.beginPath();
             ctx.arc(n.x, n.y, n.radius, 0, Math.PI * 2);
             ctx.fillStyle = n.color;
-            ctx.shadowBlur = 8;
-            ctx.shadowColor = n.color;
             ctx.fill();
-            ctx.shadowBlur = 0;
 
-            // Connect nearby nodes with delicate spider silk lines
             for (let j = i + 1; j < nodes.length; j++) {
                 const n2 = nodes[j];
                 const dx = n.x - n2.x;
                 const dy = n.y - n2.y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
+                const distSq = dx * dx + dy * dy;
 
-                if (dist < 110) {
-                    const alpha = (1 - dist / 110) * 0.35;
+                if (distSq < maxDistSq) {
+                    const alpha = (1 - Math.sqrt(distSq) / maxDist) * 0.35;
                     ctx.beginPath();
                     ctx.moveTo(n.x, n.y);
                     ctx.lineTo(n2.x, n2.y);
@@ -266,28 +279,41 @@ function initSpiderWebCanvas() {
                 }
             }
 
-            // Connect mouse to nodes (Spider-Sense Web Shooting)
             if (mouse.active) {
                 const mdx = n.x - mouse.x;
                 const mdy = n.y - mouse.y;
-                const mDist = Math.sqrt(mdx * mdx + mdy * mdy);
+                const mDistSq = mdx * mdx + mdy * mdy;
 
-                if (mDist < 160) {
-                    const mAlpha = (1 - mDist / 160) * 0.7;
+                if (mDistSq < mouseDistSq) {
+                    const mAlpha = (1 - Math.sqrt(mDistSq) / mouseDist) * 0.65;
                     ctx.beginPath();
                     ctx.moveTo(mouse.x, mouse.y);
                     ctx.lineTo(n.x, n.y);
                     ctx.strokeStyle = `rgba(0, 240, 255, ${mAlpha})`;
-                    ctx.lineWidth = 1.2;
+                    ctx.lineWidth = 1.1;
                     ctx.stroke();
                 }
             }
         }
 
-        requestAnimationFrame(animate);
+        rafId = requestAnimationFrame(animate);
     }
 
-    animate();
+    function updateCanvasActiveState() {
+        const inHero = window.scrollY < window.innerHeight * 1.1;
+        const shouldRun = !document.hidden && inHero;
+        if (shouldRun && !isRunning) {
+            isRunning = true;
+            rafId = requestAnimationFrame(animate);
+        } else if (!shouldRun && isRunning) {
+            isRunning = false;
+            if (rafId) cancelAnimationFrame(rafId);
+        }
+    }
+
+    document.addEventListener('visibilitychange', updateCanvasActiveState);
+    window.addEventListener('scroll', updateCanvasActiveState, { passive: true });
+    updateCanvasActiveState();
 }
 
 /* ==========================================================================
@@ -299,23 +325,29 @@ function init3DIslandParallax() {
     if (!island) return;
 
     const surface = island.querySelector('.island-surface');
+    if (!surface) return;
+
+    let rafPending = false;
+    let lastEvent = null;
 
     window.addEventListener('mousemove', (e) => {
-        const xPct = (e.clientX / window.innerWidth - 0.5) * 2;
-        const yPct = (e.clientY / window.innerHeight - 0.5) * 2;
-
-        const rotateX = 18 - yPct * 16;
-        const rotateY = -6 + xPct * 20;
-
-        if (surface) {
+        if (window.scrollY > window.innerHeight) return;
+        lastEvent = e;
+        if (rafPending) return;
+        rafPending = true;
+        requestAnimationFrame(() => {
+            rafPending = false;
+            if (!lastEvent) return;
+            const xPct = (lastEvent.clientX / window.innerWidth - 0.5) * 2;
+            const yPct = (lastEvent.clientY / window.innerHeight - 0.5) * 2;
+            const rotateX = 18 - yPct * 16;
+            const rotateY = -6 + xPct * 20;
             surface.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(${yPct * 10}px)`;
-        }
-    });
+        });
+    }, { passive: true });
 
     island.addEventListener('mouseleave', () => {
-        if (surface) {
-            surface.style.transform = 'rotateX(18deg) rotateY(-6deg) translateY(0px)';
-        }
+        surface.style.transform = 'rotateX(18deg) rotateY(-6deg) translateY(0px)';
     });
 }
 
@@ -327,43 +359,52 @@ function initCardStackingEffect() {
     const cards = Array.from(document.querySelectorAll('.stack-card'));
     if (!cards.length) return;
 
+    let ticking = false;
+    const prevDepths = new Array(cards.length).fill(-1);
+
     function updateCardStack() {
+        ticking = false;
         const stickyTop = 130;
 
-        cards.forEach((card, i) => {
-            const rect = card.getBoundingClientRect();
-            
-            // Check cards that come AFTER this one to determine stacking overlay
+        // Batch ALL DOM reads first (prevents layout thrashing)
+        const tops = cards.map(card => card.getBoundingClientRect().top);
+
+        // Then apply DOM writes only when state changes
+        for (let i = 0; i < cards.length; i++) {
             let stackDepth = 0;
             for (let j = i + 1; j < cards.length; j++) {
-                const nextRect = cards[j].getBoundingClientRect();
-                if (nextRect.top <= stickyTop + 30) {
+                if (tops[j] <= stickyTop + 30) {
                     stackDepth++;
                 }
             }
 
+            if (prevDepths[i] === stackDepth) continue;
+            prevDepths[i] = stackDepth;
+
+            const card = cards[i];
             if (stackDepth > 0) {
                 const scale = Math.max(0.88, 1 - (stackDepth * 0.035));
                 const yShift = stackDepth * -8;
                 const opacity = Math.max(0.7, 1 - (stackDepth * 0.1));
-                
-                card.style.transform = `translateY(${yShift}px) scale(${scale})`;
+
+                card.style.transform = `translate3d(0, ${yShift}px, 0) scale(${scale})`;
                 card.style.opacity = `${opacity}`;
-                card.style.boxShadow = '0 25px 50px rgba(0, 0, 0, 0.28), 4px 4px 0px #0f172a';
             } else {
-                card.style.transform = 'translateY(0px) scale(1)';
+                card.style.transform = 'translate3d(0, 0, 0) scale(1)';
                 card.style.opacity = '1';
-                if (rect.top <= stickyTop + 10) {
-                    card.style.boxShadow = '0 20px 45px rgba(0, 0, 0, 0.18), 4px 4px 0px #0f172a';
-                } else {
-                    card.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.08), 4px 4px 0px #0f172a';
-                }
             }
-        });
+        }
     }
 
-    window.addEventListener('scroll', updateCardStack, { passive: true });
-    window.addEventListener('resize', updateCardStack, { passive: true });
+    function onScroll() {
+        if (!ticking) {
+            ticking = true;
+            requestAnimationFrame(updateCardStack);
+        }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
     updateCardStack();
 }
 
@@ -376,11 +417,18 @@ function initDynamicSunsetTracker() {
     const sun = document.getElementById('dynamic-sun');
     if (!showcaseSection || !sun) return;
 
+    let ticking = false;
+    let lastPhase = -1;
+
     function updateSunset() {
+        ticking = false;
         const rect = showcaseSection.getBoundingClientRect();
-        const sectionHeight = showcaseSection.offsetHeight;
         const windowHeight = window.innerHeight;
 
+        // Skip work if section is well outside the viewport
+        if (rect.bottom < -200 || rect.top > windowHeight + 200) return;
+
+        const sectionHeight = rect.height;
         const totalDistance = sectionHeight + windowHeight;
         const scrolled = windowHeight - rect.top;
         const progress = Math.min(Math.max(scrolled / totalDistance, 0), 1);
@@ -389,23 +437,34 @@ function initDynamicSunsetTracker() {
         const yOffset = progress * 420;
         const scale = Math.max(0.65, 1 - progress * 0.35);
 
-        sun.style.transform = `translateX(-50%) translateY(${yOffset}px) scale(${scale})`;
+        sun.style.transform = `translate3d(-50%, ${yOffset}px, 0) scale(${scale})`;
 
-        // Dynamic Sky Gradient based on sunset progress
-        if (progress < 0.35) {
-            sun.style.filter = 'drop-shadow(0 0 35px rgba(245, 158, 11, 0.85))';
-            showcaseSection.style.background = 'linear-gradient(180deg, #f0f9ff 0%, #ede9fe 50%, #1e1b4b 100%)';
-        } else if (progress < 0.7) {
-            sun.style.filter = 'drop-shadow(0 0 45px rgba(239, 68, 68, 0.95)) hue-rotate(-20deg)';
-            showcaseSection.style.background = 'linear-gradient(180deg, #ede9fe 0%, #fed7aa 40%, #7c2d12 80%, #0f172a 100%)';
-        } else {
-            sun.style.filter = 'drop-shadow(0 0 50px rgba(168, 85, 247, 0.9)) hue-rotate(60deg) opacity(0.5)';
-            showcaseSection.style.background = 'linear-gradient(180deg, #431407 0%, #2e1065 40%, #090d16 100%)';
+        // Only mutate background & filter when crossing a phase boundary
+        const phase = progress < 0.35 ? 0 : (progress < 0.7 ? 1 : 2);
+        if (phase !== lastPhase) {
+            lastPhase = phase;
+            if (phase === 0) {
+                sun.style.filter = 'drop-shadow(0 0 35px rgba(245, 158, 11, 0.85))';
+                showcaseSection.style.background = 'linear-gradient(180deg, #f0f9ff 0%, #ede9fe 50%, #1e1b4b 100%)';
+            } else if (phase === 1) {
+                sun.style.filter = 'drop-shadow(0 0 45px rgba(239, 68, 68, 0.95)) hue-rotate(-20deg)';
+                showcaseSection.style.background = 'linear-gradient(180deg, #ede9fe 0%, #fed7aa 40%, #7c2d12 80%, #0f172a 100%)';
+            } else {
+                sun.style.filter = 'drop-shadow(0 0 50px rgba(168, 85, 247, 0.9)) hue-rotate(60deg) opacity(0.5)';
+                showcaseSection.style.background = 'linear-gradient(180deg, #431407 0%, #2e1065 40%, #090d16 100%)';
+            }
         }
     }
 
-    window.addEventListener('scroll', updateSunset, { passive: true });
-    window.addEventListener('resize', updateSunset, { passive: true });
+    function onScroll() {
+        if (!ticking) {
+            ticking = true;
+            requestAnimationFrame(updateSunset);
+        }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
     updateSunset();
 }
 
@@ -756,21 +815,27 @@ function escapeHtml(str) {
 
 function initSpiderHUDDock() {
     const dockItems = document.querySelectorAll('.dock-item');
-    const sections = document.querySelectorAll('section[id]');
+    const sections = Array.from(document.querySelectorAll('section[id]'));
+    let ticking = false;
+    let lastActiveId = '';
 
-    window.addEventListener('scroll', () => {
+    function updateDock() {
+        ticking = false;
         let currentSectionId = '';
         const scrollPos = window.scrollY + 200;
 
-        sections.forEach(section => {
+        for (let i = 0; i < sections.length; i++) {
+            const section = sections[i];
             const top = section.offsetTop;
             const height = section.offsetHeight;
             if (scrollPos >= top && scrollPos < top + height) {
                 currentSectionId = section.getAttribute('id');
+                break;
             }
-        });
+        }
 
-        if (currentSectionId) {
+        if (currentSectionId && currentSectionId !== lastActiveId) {
+            lastActiveId = currentSectionId;
             dockItems.forEach(item => {
                 if (item.getAttribute('data-section') === currentSectionId) {
                     item.classList.add('active');
@@ -779,7 +844,15 @@ function initSpiderHUDDock() {
                 }
             });
         }
-    });
+    }
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            ticking = true;
+            requestAnimationFrame(updateDock);
+        }
+    }, { passive: true });
+    updateDock();
 }
 
 /* ==========================================================================
@@ -790,35 +863,44 @@ function initTimelineSpiderScroll() {
     const timelineContainer = document.getElementById('timeline-container');
     const spiderCrawler = document.getElementById('timeline-spider-crawler');
     const silkLine = document.getElementById('timeline-silk-line');
-    const dots = document.querySelectorAll('.timeline-dot');
+    const dots = Array.from(document.querySelectorAll('.timeline-dot'));
 
     if (!timelineContainer || !spiderCrawler) return;
 
-    let lastProgress = 0;
+    let ticking = false;
 
-    function onTimelineScroll() {
+    function updateTimeline() {
+        ticking = false;
         const rect = timelineContainer.getBoundingClientRect();
         const windowHeight = window.innerHeight;
+
+        // Skip work if timeline is far outside viewport
+        if (rect.bottom < -150 || rect.top > windowHeight + 150) return;
+
+        // Read all dot positions BEFORE any style writes (zero layout thrashing)
+        const dotTops = dots.map(dot => dot.getBoundingClientRect().top);
 
         // Start scrolling spider when top of timeline reaches 45% of viewport
         const triggerPoint = windowHeight * 0.45;
         const scrollDist = triggerPoint - rect.top;
         const totalDist = rect.height;
 
-        let progress = scrollDist / totalDist;
+        let progress = totalDist > 0 ? scrollDist / totalDist : 0;
         progress = Math.max(0, Math.min(1, progress));
 
-        const percentage = progress * 100;
-        spiderCrawler.style.top = `${percentage}%`;
+        const spiderY = progress * totalDist;
+        const spiderViewportY = rect.top + spiderY;
+
+        // GPU-composited writes (no layout reflow!)
+        spiderCrawler.style.setProperty('--spider-y', `${spiderY}px`);
         if (silkLine) {
-            silkLine.style.height = `${percentage}%`;
+            silkLine.style.transform = `translateX(-50%) scaleY(${progress})`;
         }
 
         // Trigger milestone dot ripples and SFX when spider reaches milestones
-        dots.forEach(dot => {
-            const dotRect = dot.getBoundingClientRect();
-            const spiderRect = spiderCrawler.getBoundingClientRect();
-            const distance = Math.abs(dotRect.top - spiderRect.top);
+        dots.forEach((dot, i) => {
+            const dotTop = dotTops[i];
+            const distance = Math.abs(dotTop - spiderViewportY);
 
             if (distance < 40) {
                 if (!dot.classList.contains('active-glow')) {
@@ -827,7 +909,7 @@ function initTimelineSpiderScroll() {
                         playHoverZapSound();
                     }
                 }
-            } else if (spiderRect.top > dotRect.top + 20) {
+            } else if (spiderViewportY > dotTop + 20) {
                 dot.classList.add('passed-glow');
                 dot.classList.remove('active-glow');
             } else {
@@ -835,12 +917,17 @@ function initTimelineSpiderScroll() {
                 dot.classList.remove('passed-glow');
             }
         });
-
-        lastProgress = progress;
     }
 
-    window.addEventListener('scroll', onTimelineScroll, { passive: true });
-    window.addEventListener('resize', onTimelineScroll, { passive: true });
-    onTimelineScroll();
+    function onScroll() {
+        if (!ticking) {
+            ticking = true;
+            requestAnimationFrame(updateTimeline);
+        }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    updateTimeline();
 }
 

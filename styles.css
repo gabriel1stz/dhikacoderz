@@ -429,13 +429,14 @@ body.spiderverse-theme {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(10px);
     box-shadow: 
         0 30px 80px rgba(0, 0, 0, 0.8),
         0 0 45px rgba(239, 68, 68, 0.35),
         inset 0 0 30px rgba(239, 68, 68, 0.2);
     transform: rotateX(18deg) rotateY(-6deg);
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
     position: relative;
     overflow: hidden;
 }
@@ -525,18 +526,18 @@ body.spiderverse-theme {
 .spider-badge-pill {
     position: absolute;
     padding: 0.55rem 1.25rem;
-    background: rgba(15, 23, 42, 0.88);
+    background: rgba(15, 23, 42, 0.92);
     border: 1.5px solid rgba(239, 68, 68, 0.5);
     border-radius: 9999px;
     color: #ffffff;
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-weight: 800;
     font-size: 0.85rem;
-    backdrop-filter: blur(12px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), 0 0 15px rgba(239, 68, 68, 0.25);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45), 0 0 12px rgba(239, 68, 68, 0.22);
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    will-change: transform;
     animation: floatHeroBadge 4.5s ease-in-out infinite alternate;
     animation-delay: var(--d);
 }
@@ -825,15 +826,15 @@ body.spiderverse-theme {
     align-items: center;
     gap: 0.6rem;
     padding: 0.4rem 1.15rem;
-    background: rgba(255, 255, 255, 0.06);
+    background: rgba(255, 255, 255, 0.08);
     border: 1.5px solid rgba(255, 255, 255, 0.2);
     border-radius: 9999px;
     color: #ffffff;
     font-family: 'Bangers', cursive;
     font-size: 1.2rem;
     letter-spacing: 0.08em;
-    backdrop-filter: blur(8px);
     transition: transform 0.2s ease, border-color 0.2s ease;
+    will-change: transform;
     animation: textOceanWave 2.8s ease-in-out infinite alternate;
     animation-delay: calc(var(--w, 0) * 0.35s);
 }
@@ -1060,6 +1061,8 @@ body.spiderverse-theme {
 
 .section-header-centered {
     margin-bottom: 3.5rem;
+    position: relative;
+    z-index: 3;
 }
 
 .journey-stats-grid {
@@ -1067,6 +1070,8 @@ body.spiderverse-theme {
     grid-template-columns: repeat(4, 1fr);
     gap: 1.5rem;
     margin-bottom: 4.5rem;
+    position: relative;
+    z-index: 3;
 }
 
 .j-stat-card {
@@ -1137,40 +1142,51 @@ body.spiderverse-theme {
     z-index: 1;
 }
 
+/* Clip mask so silk & laser beam stay strictly inside the timeline track */
+.timeline-beam-mask {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    border-radius: 6px;
+    pointer-events: none;
+}
+
 /* Dynamic Silk Line Extended by Spider as User Scrolls */
 .timeline-silk-line {
     position: absolute;
     top: 0;
     left: 50%;
-    transform: translateX(-50%);
     width: 4px;
-    height: 0%;
+    height: 100%;
+    transform-origin: top center;
+    transform: translateX(-50%) scaleY(0);
     background: linear-gradient(180deg, #ffffff 0%, #00f0ff 60%, #ef4444 100%);
-    box-shadow: 0 0 12px rgba(0, 240, 255, 0.9), 0 0 24px rgba(239, 68, 68, 0.7);
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.8), 0 0 18px rgba(239, 68, 68, 0.6);
     border-radius: 9999px;
     z-index: 2;
-    transition: height 0.08s ease-out;
+    will-change: transform;
 }
 
 /* Flowing Laser Beam Moving Downward */
 .timeline-laser-beam {
     position: absolute;
-    top: -30%;
+    top: 0;
     left: 0;
     width: 100%;
-    height: 35%;
+    height: 28%;
     background: linear-gradient(180deg, transparent 0%, #ef4444 60%, #00f0ff 100%);
-    box-shadow: 0 0 15px #ef4444, 0 0 25px #00f0ff;
-    animation: laserBeamFlow 4.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    box-shadow: 0 0 12px #ef4444, 0 0 20px #00f0ff;
+    will-change: transform, opacity;
+    animation: flowLaserDown 3.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
     z-index: 3;
 }
 
 /* Hanging Spider Crawler that moves down following scroll */
 .timeline-spider-crawler {
     position: absolute;
-    top: 0%;
+    top: 0;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate3d(-50%, calc(var(--spider-y, 0px) - 50%), 0);
     width: 48px;
     height: 48px;
     background: #0f172a;
@@ -1179,14 +1195,15 @@ body.spiderverse-theme {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 0 20px rgba(239, 68, 68, 0.8), 0 0 35px rgba(0, 240, 255, 0.5), 3px 3px 0px #0f172a;
+    box-shadow: 0 0 18px rgba(239, 68, 68, 0.75), 0 0 28px rgba(0, 240, 255, 0.45), 3px 3px 0px #0f172a;
     z-index: 10;
     cursor: pointer;
-    transition: top 0.08s ease-out, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+    transition: transform 0.12s ease-out, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .timeline-spider-crawler:hover {
-    transform: translate(-50%, -50%) scale(1.25);
+    transform: translate3d(-50%, calc(var(--spider-y, 0px) - 50%), 0) scale(1.25);
     border-color: #00f0ff;
     box-shadow: 0 0 30px #00f0ff, 0 0 50px rgba(239, 68, 68, 0.9);
 }
@@ -1236,7 +1253,7 @@ body.spiderverse-theme {
 
 @keyframes flowLaserDown {
     0% {
-        top: -35%;
+        transform: translate3d(0, -100%, 0);
         opacity: 0;
     }
     15% {
@@ -1246,7 +1263,7 @@ body.spiderverse-theme {
         opacity: 1;
     }
     100% {
-        top: 135%;
+        transform: translate3d(0, 380%, 0);
         opacity: 0;
     }
 }
@@ -1409,11 +1426,12 @@ body.spiderverse-theme {
     position: absolute;
     top: 100px;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate3d(-50%, 0, 0);
     width: 130px;
     height: 130px;
     border-radius: 50%;
-    transition: transform 0.12s linear, filter 0.25s ease;
+    will-change: transform;
+    transition: filter 0.35s ease;
 }
 
 .sun-body {
@@ -1508,7 +1526,8 @@ body.spiderverse-theme {
     box-shadow: 0 20px 45px rgba(15, 23, 42, 0.12), 4px 4px 0px #0f172a;
     overflow: hidden;
     margin-bottom: 80px;
-    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease, opacity 0.28s ease;
+    will-change: transform, opacity;
+    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.28s ease;
     transform-origin: center top;
 }
 
@@ -1608,14 +1627,13 @@ body.spiderverse-theme {
     bottom: 8px;
     right: 8px;
     padding: 0.25rem 0.65rem;
-    background: rgba(15, 23, 42, 0.9);
+    background: rgba(15, 23, 42, 0.92);
     border: 1px solid #ffffff;
     border-radius: 9999px;
     color: #ffffff;
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.68rem;
     font-weight: 800;
-    backdrop-filter: blur(8px);
 }
 
 /* TERMINAL WINDOW FRAME */
@@ -2076,8 +2094,9 @@ body.spiderverse-theme {
     background: rgba(15, 23, 42, 0.94);
     border: 2px solid #ef4444;
     border-radius: 9999px;
-    backdrop-filter: blur(24px);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 25px rgba(239, 68, 68, 0.35);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55), 0 0 20px rgba(239, 68, 68, 0.3);
+    will-change: transform;
 }
 
 .dock-item {
